@@ -3,7 +3,7 @@
 var r = argument0;
 
 // room top
-for (var i = 0; i < r.roomWidth; i++) {
+for (var i = 0; i <= r.roomWidth; i++) {
 		
 	var xDesired = r.x + (i * unitWidth);
 	var yDesired = r.y;
@@ -52,7 +52,7 @@ for (var i = 0; i <= r.roomHeight; i++) {
 }
 
 // room left
-for (var i = 0; i < r.roomHeight; i++) {
+for (var i = 0; i <= r.roomHeight; i++) {
 	var xDesired = r.x;
 	var yDesired = r.y + (i * unitHeight);
 		

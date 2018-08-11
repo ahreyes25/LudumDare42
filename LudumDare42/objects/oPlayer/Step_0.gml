@@ -72,3 +72,5 @@ if (door != noone) {
 #endregion
 
 Collisions(oSolid);
+
+depth = -y;

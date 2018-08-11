@@ -1,2 +1,15 @@
+/// @description Build
+
 GenerateWalls(id);
-GenerateDumpsters(id);
+
+if (isKitchen) {
+	GenerateKitchenStuff(id);
+}
+
+if (isBathroom) {
+	GenerateToilet(id);	
+}
+
+if (isKitchen || isBathroom) {
+	depth = oDungeonRoom.depth - 1;	
+}

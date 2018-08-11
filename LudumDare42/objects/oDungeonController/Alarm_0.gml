@@ -9,3 +9,10 @@ while (collision_point(rx, ry, oSolid, false, true) != noone || !InsideRoom(rx, 
 	ry = random_range(0, room_height);
 }
 instance_create_layer(rx, ry, "Game", oPlayer);
+
+
+rx = random_range(0, room_width);
+ry = random_range(0, room_height);
+instance_create_layer(rx, ry, "Game", oDog);
+
+DumpstersOutside();

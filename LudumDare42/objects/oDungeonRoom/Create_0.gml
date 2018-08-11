@@ -3,4 +3,7 @@ roomHeight		= 0;
 unitWidth		= 0;
 unitHeight		= 0;
 playerInRoom	= false;
+isKitchen		= false;
+isBathroom		= false;
 alarm[0]		= 1;
+alarm[1]		= 2;

@@ -24,8 +24,8 @@ for (var j = 0; j < nRooms; j++) {
 		}
 	}
 	else {
-		if (xx > tRoom.x + unitWidth  && xx < tRoom.x + (tRoom.roomWidth  * unitWidth)  - unitWidth &&
-			yy > tRoom.y + unitHeight && yy < tRoom.y + (tRoom.roomHeight * unitHeight) - unitHeight) {
+		if (xx > tRoom.x + unitWidth  + 1 && xx < tRoom.x + (tRoom.roomWidth  * unitWidth)  - unitWidth  - 1 &&
+			yy > tRoom.y + unitHeight + 1 && yy < tRoom.y + (tRoom.roomHeight * unitHeight) - unitHeight - 1) {
 				roomInsideOf++;
 		}
 	}
