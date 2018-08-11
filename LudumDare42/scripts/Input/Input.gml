@@ -1,0 +1,25 @@
+wPressed	= keyboard_check_pressed(ord("W"));
+aPressed	= keyboard_check_pressed(ord("A"));
+sPressed	= keyboard_check_pressed(ord("S"));
+dPressed	= keyboard_check_pressed(ord("D"));
+jPressed	= keyboard_check_pressed(ord("J"));
+kPressed	= keyboard_check_pressed(ord("K"));
+lPressed	= keyboard_check_pressed(ord("L"));
+rPressed	= keyboard_check_pressed(ord("R"));
+w			= keyboard_check(ord("W"));
+a			= keyboard_check(ord("A"));
+s			= keyboard_check(ord("S"));
+d			= keyboard_check(ord("D"));
+j			= keyboard_check(ord("J"));
+k			= keyboard_check(ord("K"));
+l			= keyboard_check(ord("L"));
+r			= keyboard_check(ord("R"));
+
+leftPressed = aPressed;
+upPressed	= wPressed;
+rightPressed= dPressed;
+downPressed = sPressed;
+left		= a;
+up			= w;
+right		= d;
+down		= s;
