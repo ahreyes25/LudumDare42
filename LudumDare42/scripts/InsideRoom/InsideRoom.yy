@@ -1,8 +1,8 @@
 {
-    "id": "b4a6d971-caf4-4f23-9c56-30b4dbd3c7e3",
+    "id": "87b23141-100a-4c67-bedc-e0687895c285",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "GenerateRooms",
+    "name": "InsideRoom",
     "IsCompatibility": false,
     "IsDnD": false
 }

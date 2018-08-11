@@ -1,15 +1,16 @@
 randomize();
 
-dungeonWidth		= 50;
-dungeonHeight		= 50;
 unitWidth			= 24;
 unitHeight			= 24;
-
-numberOfRooms		= 100;
+dungeonWidth		= room_width  / unitWidth;
+dungeonHeight		= room_height / unitHeight;
+numberOfRooms		= 30;
 rooms				= ds_list_create();
+numberOfDumpsters	= 0;
+viewDistance		= 200;
+limitDrawCalls		= false; // set to true for game, this limits the number of draw calls to only what is near the player
 
 for (var i = 0; i < numberOfRooms; i++) {
-	
 	var roomWidth		= irandom_range(4, 8);
 	var roomHeight		= irandom_range(4, 8);
 	var roomX			= irandom_range(1, dungeonWidth  - roomWidth  - 2)  * unitWidth;
@@ -23,5 +24,11 @@ for (var i = 0; i < numberOfRooms; i++) {
 	ds_list_add(rooms, tRoom);
 }
 
-numberOfDumpsters	= 0;
-viewDistance		= 200;
+// At least one dumpster is made
+while (instance_number(oDumpster) == 0) {
+	var rIndex = irandom_range(0, numberOfRooms - 1);
+	var tRoom  = ds_list_find_value(rooms, rIndex);
+	GenerateDumpsters(tRoom);
+}
+
+alarm[0] = 2;
