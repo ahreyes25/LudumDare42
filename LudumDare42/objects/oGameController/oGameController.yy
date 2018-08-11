@@ -5,16 +5,6 @@
     "name": "oGameController",
     "eventList": [
         {
-            "id": "a1bfdf9c-bc51-4094-8a1a-292523e4e141",
-            "modelName": "GMEvent",
-            "mvc": "1.0",
-            "IsDnD": false,
-            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
-            "enumb": 0,
-            "eventtype": 0,
-            "m_owner": "cc9df474-beb1-4ce5-97af-b45a6257fa79"
-        },
-        {
             "id": "025ce0ec-5796-4db5-b08e-30eb02372b78",
             "modelName": "GMEvent",
             "mvc": "1.0",
@@ -32,6 +22,16 @@
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 82,
             "eventtype": 9,
+            "m_owner": "cc9df474-beb1-4ce5-97af-b45a6257fa79"
+        },
+        {
+            "id": "59067d9c-5991-4dc3-b87b-49d6ad5f0aad",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 0,
             "m_owner": "cc9df474-beb1-4ce5-97af-b45a6257fa79"
         }
     ],

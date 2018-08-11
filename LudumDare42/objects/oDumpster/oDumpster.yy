@@ -1,8 +1,8 @@
 {
-    "id": "28352839-135a-414c-9f19-dfc38651de97",
+    "id": "2ca44c61-7706-4bb3-97ac-d46ea8b14e73",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "oEntityParent",
+    "name": "oDumpster",
     "eventList": [
         
     ],
@@ -24,6 +24,6 @@
     "physicsStartAwake": true,
     "properties": null,
     "solid": false,
-    "spriteId": "00000000-0000-0000-0000-000000000000",
+    "spriteId": "75a7e483-4b7b-4042-9c2c-226528729ce6",
     "visible": true
 }
