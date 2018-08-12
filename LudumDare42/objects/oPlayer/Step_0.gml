@@ -62,14 +62,7 @@ switch (state) {
 }
 #endregion
 
-#region // Open Door
-var door = collision_circle(x, y, 24, oDoor, false, false);
-if (door != noone) {
-	if (jPressed) {
-		door.open = !door.open;
-	}
-}
-#endregion
+DropBowl();
 
 Collisions(oSolid);
 

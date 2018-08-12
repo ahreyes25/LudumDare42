@@ -21,3 +21,13 @@ horizFacing		= 1;
 vertFacing		= 1;
 xscale			= 1;
 yscale			= 1;
+canOpen			= true;
+canBowl			= true;
+numberOfBowls	= 0;
+bowls			= ds_list_create();
+
+for (var i = 0; i < 5; i++) {
+	var tBowl = instance_create_layer(x, y, "World", oBowl);
+	ds_list_add(bowls, tBowl);
+	numberOfBowls++;
+}

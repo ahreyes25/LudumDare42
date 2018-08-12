@@ -6,6 +6,8 @@ jPressed	= keyboard_check_pressed(ord("J"));
 kPressed	= keyboard_check_pressed(ord("K"));
 lPressed	= keyboard_check_pressed(ord("L"));
 rPressed	= keyboard_check_pressed(ord("R"));
+lmbPressed  = mouse_check_button_pressed(mb_left);
+rmbPressed	= mouse_check_button_pressed(mb_right);
 w			= keyboard_check(ord("W"));
 a			= keyboard_check(ord("A"));
 s			= keyboard_check(ord("S"));
@@ -14,6 +16,8 @@ j			= keyboard_check(ord("J"));
 k			= keyboard_check(ord("K"));
 l			= keyboard_check(ord("L"));
 r			= keyboard_check(ord("R"));
+lmb			= mouse_check_button(mb_left);
+rmb			= mouse_check_button(mb_right);
 
 leftPressed = aPressed;
 upPressed	= wPressed;

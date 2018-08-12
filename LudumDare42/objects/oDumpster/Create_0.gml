@@ -1,2 +1,4 @@
-/// @override
-depth = -y;
+event_inherited();
+sprite_index = sDumpster;
+image_speed = 0;
+image_index = 0;

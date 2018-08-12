@@ -4,14 +4,14 @@ unitWidth			= 24;
 unitHeight			= 24;
 dungeonWidth		= room_width  / unitWidth;
 dungeonHeight		= room_height / unitHeight;
-numberOfRooms		= irandom_range(10, 40);
+numberOfRooms		= irandom_range(10, 20);
 rooms				= ds_list_create();
 numberOfDumpsters	= 0;
 viewDistanceX		= 150;
-viewDistanceY		= 100;
+viewDistanceY		= 150;
 limitDrawCalls		= false; // set to true for game, this limits the number of draw calls to only what is near the player
-setKitchen			= false
-setBathroom			= false;
+setKitchen			= 0;
+setBathroom			= 0;
 
 for (var i = 0; i < numberOfRooms; i++) {
 	var roomWidth		= irandom_range(4, 8);
@@ -24,26 +24,19 @@ for (var i = 0; i < numberOfRooms; i++) {
 	tRoom.unitWidth		= unitWidth;
 	tRoom.unitHeight	= unitHeight;
 	
-	if (Chance(10) && !setKitchen) {
-		setKitchen = true;
+	if (Chance(10) && setKitchen == 0) {
+		setKitchen++;
 		tRoom.isKitchen = true;
 	}
 
-	if (Chance(10) && !setBathroom && !tRoom.isKitchen) {
-		setBathroom = true;
+	if (Chance(10) && setBathroom == 0 && !tRoom.isKitchen) {
+		setBathroom++;
 		tRoom.isBathroom = true;
 	}
 
 	ds_list_add(rooms, tRoom);
 }
 
-/*
-// At least one dumpster is made
-while (instance_number(oDumpster) == 0) {
-	var rIndex = irandom_range(0, numberOfRooms - 1);
-	var tRoom  = ds_list_find_value(rooms, rIndex);
-	GenerateDumpsters(tRoom);
-}
-*/
+GuaranteeKitchenAndBathroom();
 
 alarm[0] = 2;

@@ -1,9 +1,25 @@
-// Inherit the parent event
-event_inherited();
+HideOnDistance();
 
-visible = !open;
+if (place_meeting(x, y, oDoor)) {
+	instance_destroy();	
+}
 
-if (open) 
-	mask_index = sEmptyMask;
-else
-	mask_index = sDoor;
+// Open and close things
+Input();
+if (jPressed) {
+	var person = collision_rectangle(x - 12, y - 12, x + sprite_get_width(sprite_index) + 12, y + sprite_get_height(sprite_index) + 12, oPlayer, false, true);
+	if (person != noone) {
+		if (person.canOpen) {
+			open = !open;	
+		}
+	}
+}
+
+if (open) {
+	image_index = 1;
+	mask_index  = sEmptyMask;
+}
+else {
+	image_index = 0;
+	mask_index  = sDoor;
+}

@@ -14,7 +14,8 @@
         "ecf6a0f6-a377-4abc-a431-747512af3072",
         "451b93a5-c4fe-4bae-8bda-2278ccbf0aaa",
         "18b385a8-f255-40ed-bc1d-40f046de104c",
-        "a91b929e-6403-4fd5-870a-5569ee3484e3"
+        "a91b929e-6403-4fd5-870a-5569ee3484e3",
+        "1d7d77cd-0143-4998-a1d1-7c4bfd2409ef"
     ],
     "filterType": "GMScript",
     "folderName": "DungeonScripts",
