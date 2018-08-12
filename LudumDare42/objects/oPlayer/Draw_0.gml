@@ -45,7 +45,9 @@ draw_self();
 draw_text_transformed(x, y, state, 0.5, 0.5, 0);
 
 // Draw Bowls
-for (var i = 0; i < numberOfBowls; i++) {
-	var tBowl = ds_list_find_value(bowls, i);
-	draw_sprite(sBowl, tBowl.full, x + (4 * image_xscale), y - 4 - (4 * i));	
+if (numberOfBowls > 0) {
+	for (var i = 0; i < numberOfBowls; i++) {
+		var tBowl = ds_list_find_value(bowls, i);
+		draw_sprite(sBowl, tBowl.full, x + (4 * image_xscale), y - 4 - (4 * i));	
+	}
 }

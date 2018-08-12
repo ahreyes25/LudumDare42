@@ -23,6 +23,56 @@
             "enumb": 0,
             "eventtype": 3,
             "m_owner": "a714ef3d-640a-4ecf-b146-360c6310cc45"
+        },
+        {
+            "id": "20d2ce4c-ac3e-4b83-a9a8-7edf7c666b5b",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 8,
+            "m_owner": "a714ef3d-640a-4ecf-b146-360c6310cc45"
+        },
+        {
+            "id": "8f18de3a-ae1f-4239-ad2f-dfd9358bb36c",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 2,
+            "m_owner": "a714ef3d-640a-4ecf-b146-360c6310cc45"
+        },
+        {
+            "id": "a8f4c402-eb43-4fbc-ba93-77de77c00090",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "a714ef3d-640a-4ecf-b146-360c6310cc45",
+            "enumb": 0,
+            "eventtype": 4,
+            "m_owner": "a714ef3d-640a-4ecf-b146-360c6310cc45"
+        },
+        {
+            "id": "2d9f7f5a-bff9-48b0-b173-3a5b47550358",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "9df25990-4595-4228-abd5-292af583d8a5",
+            "enumb": 0,
+            "eventtype": 4,
+            "m_owner": "a714ef3d-640a-4ecf-b146-360c6310cc45"
+        },
+        {
+            "id": "9f736134-0ac7-4354-9a1d-790fe55e8130",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "7fa910d1-ac1d-4f47-a11f-200f5b0f2e5f",
+            "enumb": 0,
+            "eventtype": 4,
+            "m_owner": "a714ef3d-640a-4ecf-b146-360c6310cc45"
         }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
@@ -30,39 +80,39 @@
     "parentObjectId": "00000000-0000-0000-0000-000000000000",
     "persistent": false,
     "physicsAngularDamping": 0.1,
-    "physicsDensity": 0.5,
+    "physicsDensity": 0.1,
     "physicsFriction": 0.2,
     "physicsGroup": 0,
     "physicsKinematic": false,
     "physicsLinearDamping": 0.1,
-    "physicsObject": false,
+    "physicsObject": true,
     "physicsRestitution": 0.1,
     "physicsSensor": false,
     "physicsShape": 1,
     "physicsShapePoints": [
         {
-            "id": "753ff5c3-417c-4422-9b6e-9262fc1a51ad",
+            "id": "386debc8-c6bd-497c-ad53-757ad069a0c2",
             "modelName": "GMPoint",
             "mvc": "1.0",
             "x": 0,
-            "y": 0
+            "y": 7
         },
         {
-            "id": "47588c16-b8c7-4432-846e-b485d1a2ec38",
+            "id": "51ace426-027d-42b2-98cb-81bc0c672c99",
             "modelName": "GMPoint",
             "mvc": "1.0",
             "x": 7,
-            "y": 0
+            "y": 7
         },
         {
-            "id": "4023540f-5b5e-4777-a507-0e294bc1bfae",
+            "id": "c2b4f72e-40bd-4dd7-90fe-a3e884af4e97",
             "modelName": "GMPoint",
             "mvc": "1.0",
             "x": 7,
             "y": 10
         },
         {
-            "id": "7ff0518b-2b94-4097-8d1f-73491b13d37a",
+            "id": "385e46ff-f393-41bb-8e38-466890c0c940",
             "modelName": "GMPoint",
             "mvc": "1.0",
             "x": 0,

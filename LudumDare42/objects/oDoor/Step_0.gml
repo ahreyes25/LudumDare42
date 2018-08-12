@@ -16,10 +16,12 @@ if (jPressed) {
 }
 
 if (open) {
+	phy_active  = false;
 	image_index = 1;
 	mask_index  = sEmptyMask;
 }
 else {
+	phy_active  = true;
 	image_index = 0;
 	mask_index  = sDoor;
 }

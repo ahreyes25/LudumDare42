@@ -4,7 +4,8 @@ DeleteCornerDoors();
 
 // destroy door if place meeting stuff
 if (place_meeting(x, y, oFridge) || place_meeting(x, y, oDumpster) ||
-	place_meeting(x, y, oPantry) || place_meeting(x, y, oToilet)) {
+	place_meeting(x, y, oPantry) || place_meeting(x, y, oToilet)   ||
+	place_meeting(x, y, oCabinet)) {
 		instance_destroy();		
 		instance_create_layer(x, y, "World", oSolid);
 }

@@ -43,6 +43,26 @@
             "enumb": 0,
             "eventtype": 1,
             "m_owner": "6554059a-ad32-4b4b-9a3a-abe22677debd"
+        },
+        {
+            "id": "a2dfef5b-df17-4a59-b27b-f4ba64752046",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "9df25990-4595-4228-abd5-292af583d8a5",
+            "enumb": 0,
+            "eventtype": 4,
+            "m_owner": "6554059a-ad32-4b4b-9a3a-abe22677debd"
+        },
+        {
+            "id": "324a39ca-c22a-45db-ba88-490cb7df77c8",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "7fa910d1-ac1d-4f47-a11f-200f5b0f2e5f",
+            "enumb": 0,
+            "eventtype": 4,
+            "m_owner": "6554059a-ad32-4b4b-9a3a-abe22677debd"
         }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
@@ -55,11 +75,40 @@
     "physicsGroup": 0,
     "physicsKinematic": false,
     "physicsLinearDamping": 0.1,
-    "physicsObject": false,
+    "physicsObject": true,
     "physicsRestitution": 0.1,
     "physicsSensor": false,
     "physicsShape": 1,
-    "physicsShapePoints": null,
+    "physicsShapePoints": [
+        {
+            "id": "b708777d-d603-4eb0-83bc-0592c7a14f21",
+            "modelName": "GMPoint",
+            "mvc": "1.0",
+            "x": 8,
+            "y": 6
+        },
+        {
+            "id": "4aa721a2-5209-4665-a518-e026bdf142f2",
+            "modelName": "GMPoint",
+            "mvc": "1.0",
+            "x": 17,
+            "y": 6
+        },
+        {
+            "id": "8d522941-ad94-4cf4-84f1-66acf69ece89",
+            "modelName": "GMPoint",
+            "mvc": "1.0",
+            "x": 17,
+            "y": 19
+        },
+        {
+            "id": "176bcd2d-1b48-460a-aa51-6051fc70969a",
+            "modelName": "GMPoint",
+            "mvc": "1.0",
+            "x": 8,
+            "y": 19
+        }
+    ],
     "physicsStartAwake": true,
     "properties": null,
     "solid": false,

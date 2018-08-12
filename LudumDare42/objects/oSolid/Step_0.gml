@@ -14,3 +14,6 @@ if (jPressed) {
 		}
 	}
 }
+
+phy_fixed_rotation = true;
+phy_rotation = 0;

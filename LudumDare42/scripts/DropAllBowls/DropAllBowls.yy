@@ -1,8 +1,8 @@
 {
-    "id": "0e692a65-751f-4c4b-be1d-fb5ce64eee65",
+    "id": "789a54c8-58b1-47e4-baa3-8ab54612ca76",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "GenerateToilet",
+    "name": "DropAllBowls",
     "IsCompatibility": false,
     "IsDnD": false
 }

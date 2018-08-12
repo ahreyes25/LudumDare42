@@ -1,13 +1,20 @@
 #region // Player States
 enum dogState {
 	idle,
-	run,
-	eat,
-	poop,
-	dead,
-	carry
+	target,
+	carried,
+	poop
 }
 #endregion
+
+hunger			= 100;
+thirst			= 100;
+bathroom		= 0;
+bathroomLimit	= 50;
+canBePickedUp	= true;
+carried			= false;
+
+target			= noone;
 
 sprite_index	= sDogBrownIdle1;
 image_speed		= 0.5;
@@ -16,7 +23,7 @@ hspd			= 0;
 vspd			= 0;
 horiz			= 0;
 vert			= 0;
-movementSpeed	= 3;
+movementSpeed	= 1;
 state			= dogState.idle;
 horizFacing		= 1;
 vertFacing		= 1;

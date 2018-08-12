@@ -1,8 +1,8 @@
 {
-    "id": "7801e73f-3fcb-474e-b677-f339f1527f0d",
+    "id": "4bc98186-e6d8-4e03-acad-3e7e670a00fe",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "GenerateKitchenStuff",
+    "name": "GenerateObjectInRoom",
     "IsCompatibility": false,
     "IsDnD": false
 }

@@ -62,8 +62,24 @@ switch (state) {
 }
 #endregion
 
-DropBowl();
+#region // Interact w/World
+Input();
 
+// Drop One Bowl
+if (lPressed) {
+	DropBowl();
+}
+
+// Carry Dog
+if (carryDog) {
+	if (lPressed) {
+		carryDog = false;	
+	}
+}
+#endregion
+
+canOpen				= !carryDog;
+depth				= -y;
+phy_fixed_rotation	= true;
+phy_rotation		= 0;
 Collisions(oSolid);
-
-depth = -y;
