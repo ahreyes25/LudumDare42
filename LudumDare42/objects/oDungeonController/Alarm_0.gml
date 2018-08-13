@@ -12,7 +12,4 @@ while (collision_point(rx, ry, oSolid, false, true) != noone || !InsideRoom(rx, 
 }
 instance_create_layer(rx, ry, "Game", oPlayer);
 
-
-rx = random_range(48, room_width  - 48);
-ry = random_range(48, room_height - 48);
-instance_create_layer(rx, ry, "Game", oDog);
+alarm[1] = 30;

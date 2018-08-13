@@ -324,6 +324,25 @@
             }
         },
         {
+            "Key": "3a7d10fc-991c-4359-8e1b-3f965e53e092",
+            "Value": {
+                "id": "c7a8d1ad-6c4f-4526-8e95-82e64e2f33ae",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "scripts\/SpawnDogs\/SpawnDogs.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "417e4077-45d3-4c83-9eb8-8b369286e853",
             "Value": {
                 "id": "45610d9b-fe54-424b-97cc-2543d362cff3",
@@ -1732,6 +1751,7 @@
     ],
     "script_order": [
         "b0db9a53-f7b4-4c2e-bdf5-6a9f458beafb",
+        "3a7d10fc-991c-4359-8e1b-3f965e53e092",
         "b4a6d971-caf4-4f23-9c56-30b4dbd3c7e3",
         "958b14a6-5759-40ac-a6ff-a20fca90cd81",
         "4bc98186-e6d8-4e03-acad-3e7e670a00fe",

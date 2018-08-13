@@ -6,6 +6,12 @@ enum dogState {
 	moveToPlayer,
 	moveToBowl,
 	moveToToilet,
+	moveToCenter,
+	moveToTopQuad,
+	moveToRightQuad,
+	moveToBottomQuad,
+	moveToLeftQuad,
+	moveIntoDoor,
 	knockingOnDoor,
 	eat,
 	drink,
@@ -32,9 +38,11 @@ idleSprite		= sprite_index;
 hspd			= 0;
 vspd			= 0;
 movementSpeed	= 1;
-state			= dogState.moveToPlayer;
+state			= dogState.idle;
 horizFacing		= 1;
 vertFacing		= 1;
+xscale			= 1;
+yscale			= 1;
 
 right			= false;
 left			= false;

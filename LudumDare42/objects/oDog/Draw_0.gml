@@ -1,4 +1,5 @@
-image_xscale = horizFacing;
+image_xscale = horizFacing * xscale;
+image_yscale = yscale;
 
 switch (state) {
 	#region // idle
@@ -10,4 +11,6 @@ switch (state) {
 
 draw_self();
 
-draw_line(x, y, x + (hspd * movementSpeed * 24), y + (vspd  * movementSpeed * 24));
+draw_text(x, y, state);
+
+//draw_line(x, y, x + (hspd * movementSpeed * 24), y + (vspd  * movementSpeed * 24));

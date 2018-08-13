@@ -6,9 +6,6 @@ HideOnDistance();
 	if (horizFacing == 0) {
 		horizFacing = image_xscale;
 	}
-	if (vertFacing == 0) {
-		vertFacing = 1;	
-	}
 #endregion
 
 switch (state) {
@@ -16,6 +13,27 @@ switch (state) {
 		case dogState.idle:
 			hspd = 0;
 			vspd = 0;
+			
+			if (!InsideRoom(x, y, false, true)) {
+				state = dogState.moveToDoor;
+			}
+			else if (thirst <= 50) {
+				state = dogState.moveToToilet;
+			}
+			else if (hunger <= 50) {
+				state = dogState.moveToBowl;
+			}
+			else if (bathroom >= bathroomLimit) {
+				state = dogState.poop;
+			}
+			else if (point_distance(x, y, oPlayer.x, oPlayer.y) <= 200) {
+				state = dogState.moveToPlayer;
+			}
+			else {
+				rx = random_range(24, room_width  - 24);
+				ry = random_range(24, room_height - 24);
+				state = dogState.moveToRandom;
+			}
 		break;
 	#endregion
 	
@@ -30,19 +48,54 @@ switch (state) {
 				ry = random_range(24, room_height - 24);
 				state = dogState.idle;
 			}
+			
+			// hit door
+			var col = collision_circle(x, y, 12, oDoor, false, true);
+			if (col != noone) {
+				if (!col.open) {
+					state = dogState.knockingOnDoor;
+				}
+			}
+			
+			// Check Stats
+			if (thirst <= 50) {
+				state = dogState.moveToToilet;
+			}
+			else if (hunger <= 50) {
+				state = dogState.moveToBowl;
+			}
+			else if (bathroom >= bathroomLimit) {
+				state = dogState.poop;
+			}
+			else if (point_distance(x, y, oPlayer.x, oPlayer.y) <= 200) {
+				state = dogState.moveToPlayer;
+			}
 		break;
 	#endregion
 	
 	#region // move to door
 		case dogState.moveToDoor:
-			var col = collision_circle(x, y, 12, oDoor, false, true);
-			if (col == noone) {
-				var door = instance_nearest(x, y, oDoor);
-				hspd = lengthdir_x(movementSpeed, point_direction(x, y, door.x, door.y));
-				vspd = lengthdir_y(movementSpeed, point_direction(x, y, door.x, door.y));
-			}
-			else {
-				state = dogState.knockingOnDoor;	
+			var door = instance_nearest(x, y, oDoor);
+			if (door != noone) {
+				if (!door.open) {
+					var col = collision_circle(x, y, 12, oDoor, false, true);
+					if (col == noone) {
+						hspd = lengthdir_x(movementSpeed, point_direction(x, y, door.x + 12, door.y + 12));
+						vspd = lengthdir_y(movementSpeed, point_direction(x, y, door.x + 12, door.y + 12));
+					}
+					else {
+						state = dogState.knockingOnDoor;	
+					}
+				}
+				else {
+					if (x >= door.x - 18 && x <= door.x + 18 && y >= door.y - 18 && y <= door.y + 18) {
+						state = dogState.moveToCenter;	
+					}
+					else {
+						hspd = lengthdir_x(movementSpeed, point_direction(x, y, door.x + 12, door.y + 12));
+						vspd = lengthdir_y(movementSpeed, point_direction(x, y, door.x + 12, door.y + 12));
+					}	
+				}
 			}
 		break;
 	#endregion
@@ -70,17 +123,21 @@ switch (state) {
 			var col = collision_circle(x, y, 12, oBowl, false, true);
 			if (col == noone) {
 				var b = instance_nearest(x, y, oBowl);
-				hspd = lengthdir_x(movementSpeed, point_direction(x, y, b.x, b.y));
-				vspd = lengthdir_y(movementSpeed, point_direction(x, y, b.x, b.y));
+				if (b != noone) {
+					hspd = lengthdir_x(movementSpeed, point_direction(x, y, b.x, b.y));
+					vspd = lengthdir_y(movementSpeed, point_direction(x, y, b.x, b.y));
+				}
 			}
 			else {
 				var b = instance_nearest(x, y, oBowl);
-				if (b.capacity > 0) {
-					b.dog = id;
-					state = dogState.eat;	
-				}
-				else {
-					state = dogState.idle;
+				if (b != noone) {
+					if (b.capacity > 0) {
+						b.dog = id;
+						state = dogState.eat;	
+					}
+					else {
+						state = dogState.idle;
+					}
 				}
 			}
 		break;
@@ -91,16 +148,140 @@ switch (state) {
 			var col = collision_circle(x, y, 12, oToilet, false, true);
 			if (col == noone) {
 				var b = instance_nearest(x, y, oToilet);
-				hspd = lengthdir_x(movementSpeed, point_direction(x, y, b.x, b.y));
-				vspd = lengthdir_y(movementSpeed, point_direction(x, y, b.x, b.y));
+				if (b != noone) {
+					hspd = lengthdir_x(movementSpeed, point_direction(x, y, b.x, b.y));
+					vspd = lengthdir_y(movementSpeed, point_direction(x, y, b.x, b.y));
+				}
 			}
 			else {
 				var b = instance_nearest(x, y, oToilet);
-				if (b.open) {
-					state = dogState.drink;	
+				if (b != noone) {
+					if (b.open) {
+						state = dogState.drink;	
+					}
+					else {
+						state = dogState.idle;	
+					}
+				}
+			}
+		break;
+	#endregion
+	
+	#region // move to center
+		case dogState.moveToCenter:
+			hspd = lengthdir_x(movementSpeed, point_direction(x, y, room_width / 2, room_height / 2));
+			vspd = lengthdir_y(movementSpeed, point_direction(x, y, room_width / 2, room_height / 2));
+			
+			if (InsideRoom(x - hspd, y - vspd, false, true)) {
+				state = dogState.moveToPlayer;	
+			}
+			
+			// Reached Center
+			if (x >= room_width / 2 - 12 && x <= room_width / 2 + 12 && y >= room_height / 2 - 12 && y <= room_height / 2 + 12) {
+				if (!InsideRoom(x, y, false, true)) {
+					state = dogState.moveToRandom;	
 				}
 				else {
 					state = dogState.idle;	
+				}
+			}
+		break;
+	#endregion
+	
+	#region // move to left quad
+		case dogState.moveToLeftQuad:
+			hspd = lengthdir_x(movementSpeed, point_direction(x, y, room_width / 4, room_height / 2));
+			vspd = lengthdir_y(movementSpeed, point_direction(x, y, room_width / 4, room_height / 2));
+			
+			if (InsideRoom(x - hspd, y - vspd, false, true)) {
+				state = dogState.moveToPlayer;	
+			}
+			
+			// Reached Center
+			if (x >= room_width / 4 - 12 && x <= room_width / 4 + 12 && y >= room_height / 2 - 12 && y <= room_height / 2 + 12) {
+				if (!InsideRoom(x, y, false, true)) {
+					state = dogState.moveToRandom;	
+				}
+				else {
+					state = dogState.idle;	
+				}
+			}
+		break;
+	#endregion
+	
+	#region // move to top quad
+		case dogState.moveToTopQuad:
+			hspd = lengthdir_x(movementSpeed, point_direction(x, y, room_width / 2, room_height / 4));
+			vspd = lengthdir_y(movementSpeed, point_direction(x, y, room_width / 2, room_height / 4));
+			
+			if (InsideRoom(x - hspd, y - vspd, false, true)) {
+				state = dogState.moveToPlayer;	
+			}
+			
+			// Reached Center
+			if (x >= room_width / 2 - 12 && x <= room_width / 2 + 12 && y >= room_height / 4 - 12 && y <= room_height / 4 + 12) {
+				if (!InsideRoom(x, y, false, true)) {
+					state = dogState.moveToRandom;	
+				}
+				else {
+					state = dogState.idle;	
+				}
+			}
+		break;
+	#endregion
+	
+	#region // move to right quad
+		case dogState.moveToRightQuad:
+			hspd = lengthdir_x(movementSpeed, point_direction(x, y, room_width / 2 + room_width / 4, room_height / 2));
+			vspd = lengthdir_y(movementSpeed, point_direction(x, y, room_width / 2 + room_width / 4, room_height / 2));
+			
+			if (InsideRoom(x - hspd, y - vspd, false, true)) {
+				state = dogState.moveToPlayer;	
+			}
+			
+			// Reached Center
+			if (x >= room_width / 2 + room_width / 4 - 12 && x <= room_width / 2 + room_width / 4 + 12 && y >= room_height / 2 - 12 && y <= room_height / 2 + 12) {
+				if (!InsideRoom(x, y, false, true)) {
+					state = dogState.moveToRandom;	
+				}
+				else {
+					state = dogState.idle;	
+				}
+			}
+		break;
+	#endregion
+	
+	#region // move to bottom quad
+		case dogState.moveToBottomQuad:
+			hspd = lengthdir_x(movementSpeed, point_direction(x, y, room_width / 2, room_height / 2 + room_height / 4));
+			vspd = lengthdir_y(movementSpeed, point_direction(x, y, room_width / 2, room_height / 2 + room_height / 4));
+			
+			if (InsideRoom(x - hspd, y - vspd, false, true)) {
+				state = dogState.moveToPlayer;	
+			}
+			
+			// Reached Center
+			if (x >= room_width / 2 - 12 && x <= room_width / 2 + 12 && y >= room_height / 2 + room_height / 4 - 12 && y <= room_height / 2 + room_height / 4 + 12) {
+				if (!InsideRoom(x, y, false, true)) {
+					state = dogState.moveToRandom;	
+				}
+				else {
+					state = dogState.idle;	
+				}
+			}
+		break;
+	#endregion
+	
+	#region // move into door
+		case dogState.moveIntoDoor:
+			var door = instance_nearest(x, y, oDoor);
+			if (door != noone) {
+				if (x >= door.x - 18 && x <= door.x + 18 && y >= door.y - 18 && y <= door.y + 18) {
+					state = dogState.moveToCenter;	
+				}
+				else {
+					hspd = lengthdir_x(movementSpeed, point_direction(x, y, door.x + 12, door.y + 12));
+					vspd = lengthdir_y(movementSpeed, point_direction(x, y, door.x + 12, door.y + 12));
 				}
 			}
 		break;
@@ -117,7 +298,7 @@ switch (state) {
 					col.life--;
 				}
 				else {
-					state = dogState.idle;	
+					state = dogState.moveIntoDoor;	
 				}
 			}
 		break;
