@@ -8,10 +8,11 @@ numberOfRooms		= 10;
 rooms				= ds_list_create();
 numberOfDumpsters	= 0;
 numberOfCabinets	= 0;
-numberOfDogsToStart	= 1;
+numberOfDogsToStart	= 100;
 numberOfDogs		= 0;
 numberOfBowls		= 0;
 numberOfToilets		= 0;
+numberOfDoors		= 0;
 
 viewDistanceX		= 150;
 viewDistanceY		= 150;

@@ -22,13 +22,13 @@ enum dogState {
 }
 #endregion
 
-hunger			= 1000;
-thirst			= 60;
+hunger			= 100;
+thirst			= 100;
 bathroom		= 40;
 bathroomLimit	= 50;
 canBePickedUp	= true;
 carried			= false;
-inside			= InsideRoom(x, y, false, true);
+inside			= InsideRoom(x, y, false, false);
 rx				= random_range(24, room_width  - 24);
 ry				= random_range(24, room_height - 24);
 foodBowl		= noone;

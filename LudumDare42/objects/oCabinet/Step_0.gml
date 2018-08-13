@@ -8,7 +8,7 @@ if (place_meeting(x, y, oDoor)) {
 
 // Get Bowls
 Input();
-if (kPressed) {
+if (lPressed) {
 	var person = collision_rectangle(x - 18, y - 18, x + 18, y + 18, oPlayer, false, true);
 	if (person != noone) {
 		GivePlayerBowl();

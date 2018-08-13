@@ -12,7 +12,7 @@ for (var i = 0; i <= r.roomWidth; i++) {
 		// Percent chance to create a door instead
 		if (Chance(5)) {
 			instance_create_layer(xDesired, yDesired, "World", oDoor);
-			
+			oDungeonController.numberOfDoors++;
 		}
 		else {
 			instance_create_layer(xDesired, yDesired, "World", oSolid);
@@ -30,7 +30,7 @@ for (var i = 0; i <= r.roomWidth; i++) {
 		// Percent chance to create a door instead
 		if (Chance(5)) {
 			instance_create_layer(xDesired, yDesired, "World", oDoor);
-			
+			oDungeonController.numberOfDoors++;
 		}
 		else {
 			instance_create_layer(xDesired, yDesired, "World", oSolid);	
@@ -48,7 +48,7 @@ for (var i = 0; i <= r.roomHeight; i++) {
 		// Percent chance to create a door instead
 		if (Chance(5)) {
 			instance_create_layer(xDesired, yDesired, "World", oDoor);
-			
+			oDungeonController.numberOfDoors++;
 		}
 		else {
 			instance_create_layer(xDesired, yDesired, "World", oSolid);
@@ -66,7 +66,7 @@ for (var i = 0; i <= r.roomHeight; i++) {
 		// Percent chance to create a door instead
 		if (Chance(5)) {
 			instance_create_layer(xDesired, yDesired, "World", oDoor);
-			
+			oDungeonController.numberOfDoors++;
 		}
 		else {
 			instance_create_layer(xDesired, yDesired, "World", oSolid);	

@@ -25,7 +25,7 @@ else {
 
 Input();
 // Pick Bowl Up
-if (lPressed && !carried && canBePickedUp) {
+if (kPressed && !carried && canBePickedUp) {
 	var person = collision_rectangle(x - 12, y - 12, x + 12, y + 12, oPlayer, false, true);
 	if (person != noone) {
 		ds_list_add(oPlayer.bowls, id);

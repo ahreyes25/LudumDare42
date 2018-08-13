@@ -1,0 +1,2 @@
+canBePickedUp	= true;
+carried			= false;

@@ -4,7 +4,36 @@
     "mvc": "1.0",
     "name": "oDeadDog",
     "eventList": [
-        
+        {
+            "id": "1b520dbd-7f9f-4dd4-8fb8-f6d2993718c8",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 3,
+            "m_owner": "087781d0-d1eb-4ff8-a78a-ec910e4cc528"
+        },
+        {
+            "id": "ee20f0c6-cfb9-475a-8b98-d8afd7e20772",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 0,
+            "m_owner": "087781d0-d1eb-4ff8-a78a-ec910e4cc528"
+        },
+        {
+            "id": "59ee1040-ae34-4529-bed6-68ab5f920eb5",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 2,
+            "m_owner": "087781d0-d1eb-4ff8-a78a-ec910e4cc528"
+        }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
     "overriddenProperties": null,

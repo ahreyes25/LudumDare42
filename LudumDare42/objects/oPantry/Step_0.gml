@@ -20,11 +20,31 @@ else if (!open && image_index <= 1) {
 
 
 // Fill bowl
-if (kPressed && open) {
+if (lPressed && open) {
 	var person = collision_rectangle(x - 18, y - 18, x + 18, y + 18, oPlayer, false, true);
 	if (person != noone) {
-		var tBowl = ds_list_find_value(oPlayer.bowls, oPlayer.numberOfBowls - 1);
-		tBowl.full = true;
-		tBowl.capacity = tBowl.capacityLimit;
+		if (oPlayer.numberOfBowls > 0) {
+			var tBowl = ds_list_find_value(oPlayer.bowls, oPlayer.numberOfBowls - 1);
+			if (tBowl != noone) {
+				tBowl.full = true;
+				tBowl.capacity = tBowl.capacityLimit;
+			}
+		}
+	}
+}
+
+var dog = collision_circle(x, y, 24, oDog, false, true);
+if (dog != noone) {
+	if (Chance(1)) {
+		if (open && canDogClose) {
+			open = false;
+			canDogClose = false;
+		}
+		else {
+			canDogClose = false;
+			if (alarm[1] == -1) {
+				alarm[1] = 90;	
+			}
+		}
 	}
 }
