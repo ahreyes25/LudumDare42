@@ -39,6 +39,25 @@
     },
     "resources": [
         {
+            "Key": "087781d0-d1eb-4ff8-a78a-ec910e4cc528",
+            "Value": {
+                "id": "1f251e71-5763-4cf6-ae15-b118d744d60b",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "objects\/oDeadDog\/oDeadDog.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "0d10fb33-e641-49b8-b13a-9d092ceccb38",
             "Value": {
                 "id": "f2bd7765-e6c6-41f9-aff8-84d857326107",
@@ -226,25 +245,6 @@
                 ],
                 "resourcePath": "views\/2aa3cf51-5379-4384-a916-b4d564b84861.yy",
                 "resourceType": "GMFolder"
-            }
-        },
-        {
-            "Key": "2ad4d48d-dea1-471a-993a-fbdd8c0550ad",
-            "Value": {
-                "id": "5f461234-6488-4e21-ae9f-7904b59c0feb",
-                "modelName": "GMResourceInfo",
-                "mvc": "1.0",
-                "configDeltaFiles": [
-                    
-                ],
-                "configDeltas": [
-                    
-                ],
-                "resourceCreationConfigs": [
-                    "default"
-                ],
-                "resourcePath": "sprites\/sDogBrownIdle2\/sDogBrownIdle2.yy",
-                "resourceType": "GMSprite"
             }
         },
         {
@@ -761,6 +761,25 @@
             }
         },
         {
+            "Key": "873380b5-41b2-418c-88ab-e221c8053f32",
+            "Value": {
+                "id": "1f84f14e-5d87-48d9-99a6-8507d5fa3470",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "scripts\/InstanceNthNearest\/InstanceNthNearest.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "87b23141-100a-4c67-bedc-e0687895c285",
             "Value": {
                 "id": "9b252bc2-672a-422d-87ec-642f116a55a4",
@@ -814,6 +833,25 @@
                     "default"
                 ],
                 "resourcePath": "sprites\/sEmptyMask\/sEmptyMask.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "8b892902-bd94-44f0-ad6e-a3b18f4818ed",
+            "Value": {
+                "id": "dc91169f-a5d9-44e0-a940-960195cc1a9d",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\/sDogDead\/sDogDead.yy",
                 "resourceType": "GMSprite"
             }
         },
@@ -1708,6 +1746,7 @@
         "769ba14b-6480-4274-a2de-faf8d3ae17c6",
         "d035aeaa-b311-4657-8533-66926f5c08d4",
         "e83f8e6e-f92d-4159-99dc-1f57b4dd4486",
+        "873380b5-41b2-418c-88ab-e221c8053f32",
         "79c23e1b-4166-4c27-9d8d-2b7e6a6bdcac",
         "548382aa-52c3-4cb2-b5b1-803cfc8110e7",
         "789a54c8-58b1-47e4-baa3-8ab54612ca76"

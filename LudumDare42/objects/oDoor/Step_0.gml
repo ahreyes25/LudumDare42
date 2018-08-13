@@ -25,3 +25,8 @@ else {
 	image_index = 0;
 	mask_index  = sDoor;
 }
+
+if (life <= 0) {
+	open = true;
+	life = 100;
+}

@@ -5,7 +5,7 @@
     "name": "5365c3a8-e462-486e-97be-a270f5a11f4f",
     "children": [
         "a0620aea-732d-4afc-bbce-203c475c7bc3",
-        "2ad4d48d-dea1-471a-993a-fbdd8c0550ad"
+        "8b892902-bd94-44f0-ad6e-a3b18f4818ed"
     ],
     "filterType": "GMSprite",
     "folderName": "Dogs",

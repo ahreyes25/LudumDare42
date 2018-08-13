@@ -7,3 +7,4 @@ onEdge			= false;
 corner			= false;
 sidesNotInRoom	= 0;
 alarm[0]		= 1;
+life			= 100;

@@ -1,10 +1,12 @@
 HideOnDistance();
 
-visible			= !carried;
-phy_active		= visible;
-depth			= -y;
-image_index		= full;
-sprite_index	= sBowl;
+visible				= !carried;
+phy_active			= visible;
+depth				= -y;
+image_index			= full;
+sprite_index		= sBowl;
+phy_fixed_rotation	= true;
+phy_rotation		= 0;
 
 if (carried) {
 	phy_position_x = oPlayer.x;
