@@ -4,7 +4,7 @@ HideOnDistance();
 	horizFacing = sign(hspd);
 	vertFacing	= sign(vspd);
 	if (horizFacing == 0) {
-		horizFacing = image_xscale;
+		horizFacing = sign(image_xscale);
 	}
 #endregion
 
@@ -14,10 +14,7 @@ switch (state) {
 			hspd = 0;
 			vspd = 0;
 			
-			if (!InsideRoom(x, y, false, true)) {
-				state = dogState.moveToDoor;
-			}
-			else if (thirst <= 50) {
+			if (thirst <= 50) {
 				state = dogState.moveToToilet;
 			}
 			else if (hunger <= 50) {
@@ -25,9 +22,6 @@ switch (state) {
 			}
 			else if (bathroom >= bathroomLimit) {
 				state = dogState.poop;
-			}
-			else if (point_distance(x, y, oPlayer.x, oPlayer.y) <= 200) {
-				state = dogState.moveToPlayer;
 			}
 			else {
 				rx = random_range(24, room_width  - 24);
@@ -66,9 +60,6 @@ switch (state) {
 			}
 			else if (bathroom >= bathroomLimit) {
 				state = dogState.poop;
-			}
-			else if (point_distance(x, y, oPlayer.x, oPlayer.y) <= 200) {
-				state = dogState.moveToPlayer;
 			}
 		break;
 	#endregion
@@ -120,49 +111,103 @@ switch (state) {
 	
 	#region // move to bowl
 		case dogState.moveToBowl:
-			var col = collision_circle(x, y, 12, oBowl, false, true);
-			if (col == noone) {
-				var b = instance_nearest(x, y, oBowl);
-				if (b != noone) {
-					hspd = lengthdir_x(movementSpeed, point_direction(x, y, b.x, b.y));
-					vspd = lengthdir_y(movementSpeed, point_direction(x, y, b.x, b.y));
+		
+			// If no food bowl defined, just find the closest one
+			if (foodBowl == noone) {
+				foodBowl = instance_nearest(x, y, oBowl);
+				if (foodBowl != noone) {
+					if (!foodBowl.full) {
+						for (var i = 0; i < oDungeonController.numberOfBowls; i++) {
+							var tBowl = InstanceNthNearest(x, y, oBowl, i);
+						
+							if (foodBowl.full) {
+								foodBowl = tBowl;
+								break;
+							}
+						}
+					}
 				}
 			}
-			else {
-				var b = instance_nearest(x, y, oBowl);
-				if (b != noone) {
-					if (b.capacity > 0) {
-						b.dog = id;
+		
+			if (foodBowl != noone) {
+				var col = collision_circle(x, y, 12, foodBowl, false, true);
+				if (col == noone) {
+					hspd = lengthdir_x(movementSpeed, point_direction(x, y, foodBowl.x, foodBowl.y));
+					vspd = lengthdir_y(movementSpeed, point_direction(x, y, foodBowl.x, foodBowl.y));
+				}
+				else {
+					if (foodBowl.full && foodBowl.dogs < 4 && !foodBowl.carried) {
+						foodBowl.dogs++;
 						state = dogState.eat;	
 					}
 					else {
-						state = dogState.idle;
+						for (var i = 0; i < oDungeonController.numberOfBowls; i++) {
+							var tBowl = InstanceNthNearest(x, y, oBowl, i);
+							if (foodBowl.full) {
+								foodBowl = tBowl;
+								break;
+							}
+						}
+					
+						if (foodBowl == noone) {
+							foodBowl = instance_nearest(x, y, irandom_range(0, oDungeonController.numberOfBowls - 1));	
+						}
 					}
 				}
+			}
+			else {
+				state = dogState.moveToRandom;	
 			}
 		break;
 	#endregion
 	
 	#region // move to toilet
 		case dogState.moveToToilet:
-			var col = collision_circle(x, y, 12, oToilet, false, true);
-			if (col == noone) {
-				var b = instance_nearest(x, y, oToilet);
-				if (b != noone) {
-					hspd = lengthdir_x(movementSpeed, point_direction(x, y, b.x, b.y));
-					vspd = lengthdir_y(movementSpeed, point_direction(x, y, b.x, b.y));
+			// If no food bowl defined, just find the closest one
+			if (toilet == noone) {
+				toilet = instance_nearest(x, y, oToilet);
+				if (toilet != noone) {
+					if (!toilet.open) {
+						for (var i = 0; i < oDungeonController.numberOfToilets; i++) {
+							var tToilet = InstanceNthNearest(x, y, oToilet, i);
+						
+							if (toilet.open) {
+								toilet = tToilet;
+								break;
+							}
+						}
+					}
 				}
 			}
-			else {
-				var b = instance_nearest(x, y, oToilet);
-				if (b != noone) {
-					if (b.open) {
+		
+			if (toilet != noone) {
+				var col = collision_circle(x, y, 12, toilet, false, true);
+				if (col == noone) {
+					hspd = lengthdir_x(movementSpeed, point_direction(x, y, toilet.x, toilet.y));
+					vspd = lengthdir_y(movementSpeed, point_direction(x, y, toilet.x, toilet.y));
+				}
+				else {
+					if (toilet.open && toilet.dogs < 4) {
+						toilet.dogs++;
 						state = dogState.drink;	
 					}
 					else {
-						state = dogState.idle;	
+						for (var i = 0; i < oDungeonController.numberOfToilets; i++) {
+							var tToilet = InstanceNthNearest(x, y, oToilet, i);
+							if (toilet.open) {
+								toilet = tToilet;
+								break;
+							}
+						}
+					
+						if (toilet == noone) {
+							toilet = instance_nearest(x, y, irandom_range(0, oDungeonController.numberOfToilets - 1));	
+						}
 					}
 				}
+			}
+			else {
+				state = dogState.moveToRandom;	
 			}
 		break;
 	#endregion
@@ -173,17 +218,12 @@ switch (state) {
 			vspd = lengthdir_y(movementSpeed, point_direction(x, y, room_width / 2, room_height / 2));
 			
 			if (InsideRoom(x - hspd, y - vspd, false, true)) {
-				state = dogState.moveToPlayer;	
+				state = dogState.idle;	
 			}
 			
 			// Reached Center
 			if (x >= room_width / 2 - 12 && x <= room_width / 2 + 12 && y >= room_height / 2 - 12 && y <= room_height / 2 + 12) {
-				if (!InsideRoom(x, y, false, true)) {
-					state = dogState.moveToRandom;	
-				}
-				else {
-					state = dogState.idle;	
-				}
+				state = dogState.moveToRandom;
 			}
 		break;
 	#endregion
@@ -306,19 +346,86 @@ switch (state) {
 	
 	#region // poop
 		case dogState.poop:
-			
+			hspd = 0;
+			vspd = 0;
+			if (alarm[0] == -1) {
+				alarm[0] = 60;	
+			}
 		break;
 	#endregion
 	
 	#region // eat
 		case dogState.eat:
+			hspd = 0;
+			vspd = 0;
 			
+			foodBowl.capacity--;
+			hunger += 0.5;
+			bathroom += 0.1;
+			scale += 0.005;
+			
+			if (!foodBowl.full || hunger >= 90) {
+				if (thirst <= 50) {
+					foodBowl.dogs--;
+					NewFixture();
+					state = dogState.moveToToilet;	
+				}
+				else if (bathroom >= bathroomLimit) {
+					foodBowl.dogs--;
+					NewFixture();
+					state = dogState.poop;	
+				}
+				else {
+					foodBowl.dogs--;
+					NewFixture();
+					state = dogState.moveToRandom;	
+				}
+			}
+			else if (!foodBowl.full) {
+				if (hunger <= 50) {
+					NewFixture();
+					state = dogState.moveToBowl;	
+				}
+			}
 		break;
 	#endregion
 	
 	#region // drink
 		case dogState.drink:
-			// randomly close lid
+			hspd = 0;
+			vspd = 0;
+
+			thirst += 0.5;
+			bathroom += 0.05;
+			scale += 0.001;
+			
+			if (Chance(1)) {
+				toilet.open = !toilet.open;	
+			}
+			
+			if (!toilet.open || thirst >= 90) {
+				if (hunger <= 50) {
+					toilet.dogs--;
+					NewFixture();
+					state = dogState.moveToBowl;	
+				}
+				else if (bathroom >= bathroomLimit) {
+					toilet.dogs--;
+					NewFixture();
+					state = dogState.poop;	
+				}
+				else {
+					toilet.dogs--;
+					NewFixture();
+					state = dogState.moveToRandom;	
+				}
+			}
+			else if (!toilet.open) {
+				if (thirst <= 50) {
+					NewFixture();
+					state = dogState.moveToToilet;	
+				}
+			}
 		break;
 	#endregion
 	
@@ -376,15 +483,11 @@ else {
 
 #region // Hunger & Thirst Depletion/Refill
 	if (hunger > 0) {
-		hunger -= 0.1;	
+		hunger -= 0.05;	
 	}
+	
 	if (thirst > 0) {
 		thirst -= 0.1;	
-	}
-	if (bathroom < bathroomLimit) {
-		if (hunger >= 50 && thirst >= 50) {
-			bathroom += 0.05;	
-		}
 	}
 	
 	if (hunger <= 0 && thirst <= 0) {

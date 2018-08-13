@@ -324,6 +324,25 @@
             }
         },
         {
+            "Key": "3572eef8-624d-40c7-821c-621de784fbbf",
+            "Value": {
+                "id": "59f9e8ea-2b20-4939-9b91-3ca5763e6760",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "scripts\/NewFixture\/NewFixture.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "3a7d10fc-991c-4359-8e1b-3f965e53e092",
             "Value": {
                 "id": "c7a8d1ad-6c4f-4526-8e95-82e64e2f33ae",
@@ -397,6 +416,25 @@
                 ],
                 "resourcePath": "views\/453944ec-89ad-473f-8dd4-eb03057f10d8.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "465cc921-53d4-4494-bafe-ce3e19dc100e",
+            "Value": {
+                "id": "61fa0016-312f-4c98-a6f0-c48310d09b80",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\/sDogPoop\/sDogPoop.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -1426,6 +1464,25 @@
             }
         },
         {
+            "Key": "d4c6fee4-fcf9-4e79-999b-90735fd0f463",
+            "Value": {
+                "id": "f65ede36-a3b9-4051-8328-79dbf270f40a",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "objects\/oPoop\/oPoop.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "d4d2de12-935a-453e-b48c-4c6a9ba9d61f",
             "Value": {
                 "id": "e71958c4-3696-48db-9bcf-caa4eb7e4e6d",
@@ -1752,6 +1809,7 @@
     "script_order": [
         "b0db9a53-f7b4-4c2e-bdf5-6a9f458beafb",
         "3a7d10fc-991c-4359-8e1b-3f965e53e092",
+        "3572eef8-624d-40c7-821c-621de784fbbf",
         "b4a6d971-caf4-4f23-9c56-30b4dbd3c7e3",
         "958b14a6-5759-40ac-a6ff-a20fca90cd81",
         "4bc98186-e6d8-4e03-acad-3e7e670a00fe",

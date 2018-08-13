@@ -11,4 +11,5 @@ for (var i = 0; i < oPlayer.numberOfBowls; i++) {
 	ds_list_delete(oPlayer.bowls, i);
 }
 
+oDungeonController.numberOfBowls = oPlayer.numberOfBowls;
 oPlayer.numberOfBowls = 0;

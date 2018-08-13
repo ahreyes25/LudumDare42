@@ -8,7 +8,9 @@ if (isKitchen) {
 }
 
 if (isBathroom) {
-	GenerateObjectInRoom(id, oToilet);	
+	repeat(choose(1, 2, 3)) {
+		GenerateObjectInRoom(id, oToilet);	
+	}
 }
 
 if (isKitchen || isBathroom) {

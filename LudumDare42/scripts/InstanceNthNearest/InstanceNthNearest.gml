@@ -8,6 +8,7 @@
 //      n         proximity, real
 //
 /// GMLscripts.com/license
+
 var pointx	= argument0;
 var pointy	= argument1;
 var object	= argument2;

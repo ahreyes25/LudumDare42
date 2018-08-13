@@ -33,5 +33,6 @@ if (lPressed && !carried && canBePickedUp) {
 		visible = false;
 		carried = true;
 		canBePickedUp = false;
+		oDungeonController.numberOfBowls--;
 	}
 }

@@ -22,15 +22,17 @@ enum dogState {
 }
 #endregion
 
-hunger			= 100;
-thirst			= 100;
-bathroom		= 0;
+hunger			= 1000;
+thirst			= 60;
+bathroom		= 40;
 bathroomLimit	= 50;
 canBePickedUp	= true;
 carried			= false;
 inside			= InsideRoom(x, y, false, true);
 rx				= random_range(24, room_width  - 24);
 ry				= random_range(24, room_height - 24);
+foodBowl		= noone;
+toilet			= noone;
 
 sprite_index	= sDogBrownIdle1;
 image_speed		= 0.5;
@@ -38,11 +40,10 @@ idleSprite		= sprite_index;
 hspd			= 0;
 vspd			= 0;
 movementSpeed	= 1;
-state			= dogState.idle;
+state			= dogState.moveToDoor;
 horizFacing		= 1;
 vertFacing		= 1;
-xscale			= 1;
-yscale			= 1;
+scale			= 1;
 
 right			= false;
 left			= false;

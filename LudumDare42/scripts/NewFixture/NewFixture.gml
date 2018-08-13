@@ -1,0 +1,14 @@
+fix1 = physics_fixture_create();
+physics_fixture_set_polygon_shape(		fix1);
+physics_fixture_add_point(				fix1, -6 * scale, -9 * scale);
+physics_fixture_add_point(				fix1,  6 * scale, -9 * scale);
+physics_fixture_add_point(				fix1,  6 * scale,  0);
+physics_fixture_add_point(				fix1, -6 * scale,  0);
+physics_fixture_set_density(			fix1, 0.5 + (0.5 * scale));
+physics_fixture_set_friction(			fix1, 0.2 + (0.5 * scale));
+physics_fixture_set_linear_damping(		fix1, 0.1 + (0.5 * scale));
+physics_fixture_set_angular_damping(	fix1, 0.1 + (0.5 * scale));
+physics_fixture_set_restitution(		fix1, 0.1 + (0.5 * scale));
+physics_fixture_set_awake(				fix1, true);
+physics_fixture_bind(					fix1, id);
+physics_fixture_delete(fix1);

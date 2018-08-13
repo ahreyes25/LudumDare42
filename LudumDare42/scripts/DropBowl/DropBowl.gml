@@ -30,6 +30,7 @@ if (oPlayer.numberOfBowls > 0) {
 					tBowl.alarm[0] = 10;
 					ds_list_delete(oPlayer.bowls, oPlayer.numberOfBowls - 1);
 					oPlayer.numberOfBowls--;
+					oDungeonController.numberOfBowls++;
 				}
 			}
 		}
