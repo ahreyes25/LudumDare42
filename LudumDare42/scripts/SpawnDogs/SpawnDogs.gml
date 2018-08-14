@@ -31,4 +31,5 @@ if (tDoor != noone) {
 	}
 	
 	instance_create_layer(rx, ry, "Game", oDog);
+	audio_play_sound(sfNewDog, 0, 0);
 }

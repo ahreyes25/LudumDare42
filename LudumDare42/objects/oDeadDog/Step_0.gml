@@ -45,6 +45,8 @@ else {
 		var dump = collision_rectangle(x - 18, y - 18, x + 18, y + 18, oDumpster, false, true);
 		if (dump != noone) {
 			if (dump.open) {
+				AddPoints(1);
+				audio_play_sound(sfDumpsterDog, 0, 0);
 				instance_destroy();
 			}
 		}

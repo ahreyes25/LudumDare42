@@ -6,6 +6,7 @@ if (oPlayer.numberOfBowls > 0) {
 	if (cabinet != noone) {
 		var tBowl = ds_list_find_value(oPlayer.bowls, oPlayer.numberOfBowls - 1);
 		ds_list_delete(oPlayer.bowls, oPlayer.numberOfBowls - 1);
+		audio_play_sound(sfBowl, 0, 0);
 		
 		with (tBowl) {
 			instance_destroy();	
@@ -19,20 +20,23 @@ if (oPlayer.numberOfBowls > 0) {
 	else { // no cabinet
 		// drop bowl
 		if (oPlayer.numberOfBowls > 0) {
-			var groundBowl = collision_circle(oPlayer.x, oPlayer.y, 36, oBowl, false, true);
-			if (groundBowl != noone) {
-				if (groundBowl.carried) {
+			//var groundBowl = collision_circle(oPlayer.x, oPlayer.y, 36, oBowl, false, true);
+			//if (groundBowl != noone) {
+			//	if (groundBowl.carried) {
 					var tBowl = ds_list_find_value(oPlayer.bowls, oPlayer.numberOfBowls - 1);
-					tBowl.visible = true;
-					tBowl.carried = false;
-					tBowl.phy_position_x = oPlayer.x;
-					tBowl.phy_position_y = oPlayer.y;
-					tBowl.alarm[0] = 10;
-					ds_list_delete(oPlayer.bowls, oPlayer.numberOfBowls - 1);
-					oPlayer.numberOfBowls--;
-					oDungeonController.numberOfBowls++;
-				}
-			}
+					if (tBowl != noone) {
+						tBowl.visible = true;
+						tBowl.carried = false;
+						tBowl.phy_position_x = oPlayer.x;
+						tBowl.phy_position_y = oPlayer.y;
+						tBowl.alarm[0] = 10;
+						ds_list_delete(oPlayer.bowls, oPlayer.numberOfBowls - 1);
+						oPlayer.numberOfBowls--;
+						oDungeonController.numberOfBowls++;
+						audio_play_sound(sfBowl, 0, 0);
+					}
+			//	}
+			//}
 		}
 	}
 }

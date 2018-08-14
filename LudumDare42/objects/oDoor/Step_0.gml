@@ -11,6 +11,8 @@ if (jPressed) {
 	if (person != noone) {
 		if (person.canOpen) {
 			open = !open;	
+			audio_play_sound(sfDoor, 0, 0);
+			ShakeScreen(4, 10);
 		}
 	}
 }

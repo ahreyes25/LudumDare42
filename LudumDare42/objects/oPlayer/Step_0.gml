@@ -24,6 +24,7 @@ else if (down)
 				if (horiz != 0 || vert != 0) {
 					state = playerState.run;
 				}
+				audio_stop_sound(sfFootstep);
 
 			break;
 		#endregion
@@ -37,6 +38,10 @@ else if (down)
 				if (hspd == 0 && vspd == 0) {
 					state = playerState.idle;		
 				}
+				
+				if (image_index == 0 || image_index == 2) {
+					audio_play_sound(sfFootstep, -1, 0);	
+				}
 			break;
 		#endregion	
 	}
@@ -47,13 +52,22 @@ else if (down)
 
 	// Drop One Bowl
 	if (kPressed) {
-		DropBowl();
+		var b = collision_circle(x, y, 24, oBowl, false, true);
+		if (b == noone) {
+			DropBowl();
+		}
+		else {
+			if (b.carried) {
+				DropBowl();
+			}
+		}
 	}
 
 	// Carry Dog
 	if (carryDog) {
 		if (kPressed) {
 			carryDog = false;	
+			audio_play_sound(sfPickupDog, 0, 0);
 		}
 	}
 

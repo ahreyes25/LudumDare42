@@ -18,9 +18,14 @@ y = phy_position_y;
 
 if (capacity > 0) {
 	full = true;	
+	playedSound = false;
 }
 else {
 	full = false;	
+	if (!playedSound) {
+		audio_play_sound(sfBowlEmpty, 0, 0);	
+		playedSound = true;
+	}
 }
 
 Input();
@@ -28,11 +33,14 @@ Input();
 if (kPressed && !carried && canBePickedUp) {
 	var person = collision_rectangle(x - 12, y - 12, x + 12, y + 12, oPlayer, false, true);
 	if (person != noone) {
-		ds_list_add(oPlayer.bowls, id);
-		oPlayer.numberOfBowls++;
-		visible = false;
-		carried = true;
-		canBePickedUp = false;
-		oDungeonController.numberOfBowls--;
+		if (!person.carryDog) {
+			ds_list_add(oPlayer.bowls, id);
+			oPlayer.numberOfBowls++;
+			visible = false;
+			carried = true;
+			canBePickedUp = false;
+			oDungeonController.numberOfBowls--;
+			audio_play_sound(sfBowl, 0, 0);
+		}
 	}
 }

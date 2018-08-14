@@ -2,5 +2,5 @@
 if (numberOfDogs < numberOfDogsToStart) {
 	numberOfDogs++;
 	SpawnDogs();
-	alarm[1] = 10;
+	alarm[1] = 300 + ((numberOfDogsToStart - numberOfDogs) * 4);
 }

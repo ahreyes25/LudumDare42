@@ -1,0 +1,2 @@
+if (shakeScreen) 
+	shakeScreen = false;

@@ -4,7 +4,26 @@
     "mvc": "1.0",
     "name": "oPoop",
     "eventList": [
-        
+        {
+            "id": "7489cff8-59fe-4d43-8060-a25d61dfe336",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 0,
+            "m_owner": "d4c6fee4-fcf9-4e79-999b-90735fd0f463"
+        },
+        {
+            "id": "b4251119-a96b-43e4-b440-9d12622d2ef8",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 8,
+            "m_owner": "d4c6fee4-fcf9-4e79-999b-90735fd0f463"
+        }
     ],
     "maskSpriteId": "00000000-0000-0000-0000-000000000000",
     "overriddenProperties": null,

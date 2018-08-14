@@ -10,14 +10,16 @@ numberOfDumpsters	= 0;
 numberOfCabinets	= 0;
 numberOfDogsToStart	= 100;
 numberOfDogs		= 0;
+numberOfDeadDogs	= 0;
 numberOfBowls		= 0;
 numberOfToilets		= 0;
 numberOfDoors		= 0;
+points				= 0;
 
 viewDistanceX		= 150;
 viewDistanceY		= 150;
-limitDistance		= 150;
-limitDrawCalls		= false; // set to true for game, this limits the number of draw calls to only what is near the player
+limitDistance		= 200;
+limitDrawCalls		= true; // set to true for game, this limits the number of draw calls to only what is near the player
 setKitchen			= 0;
 setBathroom			= 0;
 
@@ -48,3 +50,11 @@ for (var i = 0; i < numberOfRooms; i++) {
 GuaranteeKitchenAndBathroom();
 
 alarm[0] = 2;
+
+audio_play_sound(DogsIncoming, 0, 1);
+
+
+shakeScreen = false;
+shakeSize	= 4;
+
+instance_create_depth(0, 0, "UI", oFlash);

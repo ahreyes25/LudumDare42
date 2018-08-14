@@ -1,0 +1,1 @@
+ScreenFlash(0.8);

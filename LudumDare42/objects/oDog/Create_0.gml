@@ -34,7 +34,7 @@ ry				= random_range(24, room_height - 24);
 foodBowl		= noone;
 toilet			= noone;
 
-sprite_index	= sDogBrownIdle1;
+sprite_index	= sDogIdle;
 image_speed		= 0.5;
 idleSprite		= sprite_index;
 hspd			= 0;
@@ -44,6 +44,7 @@ state			= dogState.moveToDoor;
 horizFacing		= 1;
 vertFacing		= 1;
 scale			= 1;
+alarm[2]		= random_range(100, 200);
 
 right			= false;
 left			= false;

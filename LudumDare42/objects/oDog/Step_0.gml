@@ -1,5 +1,8 @@
 HideOnDistance();
 
+depth = -y;
+depth = -phy_position_y;
+
 #region // Direction
 	horizFacing = sign(hspd);
 	vertFacing	= sign(vspd);
@@ -114,17 +117,15 @@ HideOnDistance();
 			case dogState.moveToBowl:
 		
 				// If no food bowl defined, just find the closest one
-				if (foodBowl == noone) {
-					foodBowl = instance_nearest(x, y, oBowl);
-					if (foodBowl != noone) {
-						if (!foodBowl.full) {
-							for (var i = 0; i < oDungeonController.numberOfBowls; i++) {
-								var tBowl = InstanceNthNearest(x, y, oBowl, i);
+				foodBowl = instance_nearest(x, y, oBowl);
+				if (foodBowl != noone) {
+					if (!foodBowl.full) {
+						for (var i = 0; i < oDungeonController.numberOfBowls; i++) {
+							var tBowl = InstanceNthNearest(x, y, oBowl, i);
 						
-								if (foodBowl.full) {
-									foodBowl = tBowl;
-									break;
-								}
+							if (foodBowl.full) {
+								foodBowl = tBowl;
+								break;
 							}
 						}
 					}
@@ -315,12 +316,17 @@ HideOnDistance();
 			case dogState.moveIntoDoor:
 				var door = instance_nearest(x, y, oDoor);
 				if (door != noone) {
-					if (x >= door.x - 18 && x <= door.x + 18 && y >= door.y - 18 && y <= door.y + 18) {
-						state = dogState.moveToCenter;	
+					if (door.open) {
+						if (x >= door.x - 18 && x <= door.x + 18 && y >= door.y - 18 && y <= door.y + 18) {
+							state = dogState.moveToCenter;	
+						}
+						else {
+							hspd = lengthdir_x(movementSpeed, point_direction(x, y, door.x + 12, door.y + 12));
+							vspd = lengthdir_y(movementSpeed, point_direction(x, y, door.x + 12, door.y + 12));
+						}
 					}
 					else {
-						hspd = lengthdir_x(movementSpeed, point_direction(x, y, door.x + 12, door.y + 12));
-						vspd = lengthdir_y(movementSpeed, point_direction(x, y, door.x + 12, door.y + 12));
+						state = dogState.knockingOnDoor;	
 					}
 				}
 			break;
@@ -362,6 +368,7 @@ HideOnDistance();
 				hunger += 0.5;
 				bathroom += 0.1;
 				scale += 0.005;
+				AddPoints(1);
 			
 				if (!foodBowl.full || hunger >= 90) {
 					if (thirst <= 50) {
@@ -397,13 +404,14 @@ HideOnDistance();
 				thirst += 0.5;
 				bathroom += 0.05;
 				scale += 0.001;
+				AddPoints(1);
 			
 				if (!toilet.open || thirst >= 90) {
 					if (hunger <= 50) {
 						toilet.dogs--;
 						NewFixture();
 					
-						if (Chance(5)) {
+						if (Chance(10)) {
 							toilet.open = false;	
 						}
 						state = dogState.moveToBowl;	
@@ -412,7 +420,7 @@ HideOnDistance();
 						toilet.dogs--;
 						NewFixture();
 					
-						if (Chance(5)) {
+						if (Chance(10)) {
 							toilet.open = false;	
 						}
 						state = dogState.poop;	
@@ -421,7 +429,7 @@ HideOnDistance();
 						toilet.dogs--;
 						NewFixture();
 					
-						if (Chance(5)) {
+						if (Chance(10)) {
 							toilet.open = false;	
 						}
 						state = dogState.moveToRandom;	
@@ -431,7 +439,7 @@ HideOnDistance();
 					if (thirst <= 50) {
 						NewFixture();
 					
-						if (Chance(5)) {
+						if (Chance(10)) {
 							toilet.open = false;	
 						}
 						state = dogState.moveToToilet;	
@@ -476,7 +484,10 @@ HideOnDistance();
 	
 		#region // dead
 			case dogState.dead:
-				instance_create_layer(x, y, "World", oDeadDog);
+				AddPoints(-100000);
+				oDungeonController.numberOfDeadDogs++;
+				var dd = instance_create_layer(x, y, "World", oDeadDog);
+				dd.scale = scale;
 				instance_destroy();
 			break;
 		#endregion
@@ -492,6 +503,7 @@ HideOnDistance();
 					canBePickedUp		= false;
 					carried				= true;
 					oPlayer.carryDog	= true;
+					audio_play_sound(sfPickupDog, 0, 0);
 				
 					if (oPlayer.numberOfBowls > 0) {
 						DropAllBowls();	
@@ -505,16 +517,18 @@ HideOnDistance();
 #endregion
 
 #region // Hunger & Thirst Depletion/Refill
-	if (hunger > 0) {
-		hunger -= 0.05;	
-	}
+	if (state != dogState.moveToDoor) {
+		if (hunger > 0) {
+			hunger -= 0.05;	
+		}
 	
-	if (thirst > 0) {
-		thirst -= 0.1;	
-	}
+		if (thirst > 0) {
+			thirst -= 0.1;	
+		}
 	
-	if (hunger <= 0 && thirst <= 0) {
-		state = dogState.dead;	
+		if (hunger <= 0 && thirst <= 0) {
+			state = dogState.dead;	
+		}	
 	}
 #endregion
 

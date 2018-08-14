@@ -11,10 +11,10 @@
         "a43c5bb9-5982-4523-ab09-2ceb6fc6c50e",
         "b96fb176-22f7-44d3-938d-64eb015e3107",
         "ae43b13e-27a5-4e56-adb6-42202a10a5c0",
-        "88a2e595-418a-40a0-9178-7066ee285c65",
         "e8aadd00-1106-4072-b226-e1ab40ea0eca",
         "c0e439fa-825c-4a1d-a0d8-34d3ffc134cc",
-        "fc4409f4-aa0b-448e-8515-95919fac9fc2"
+        "fc4409f4-aa0b-448e-8515-95919fac9fc2",
+        "88a2e595-418a-40a0-9178-7066ee285c65"
     ],
     "filterType": "GMSprite",
     "folderName": "DungeonSprites",

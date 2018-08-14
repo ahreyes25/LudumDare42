@@ -51,4 +51,4 @@ switch (state) {
 
 draw_self();
 
-draw_text_transformed(x, y, numberOfBowls, 0.5, 0.5, 0);
+//draw_text_transformed(x, y, numberOfBowls, 0.5, 0.5, 0);

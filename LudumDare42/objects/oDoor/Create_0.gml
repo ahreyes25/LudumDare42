@@ -8,5 +8,6 @@ onEdge			= false;
 corner			= false;
 sidesNotInRoom	= 0;
 alarm[0]		= 1;
+alarm[1]		= 30;
 life			= 100;
 sideOut			= "";

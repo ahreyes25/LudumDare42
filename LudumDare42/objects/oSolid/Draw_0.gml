@@ -91,3 +91,5 @@ else if (wallLeft && wallRight && !wallUp && !wallDown) {
 else if (!wallLeft && !wallRight && wallUp && wallDown) {
 	draw_sprite(sWallTiles, 15, x, y);	
 }
+
+//draw_text(x, y, durability);

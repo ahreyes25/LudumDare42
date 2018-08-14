@@ -28,6 +28,7 @@ if (lPressed && open) {
 			if (tBowl != noone) {
 				tBowl.full = true;
 				tBowl.capacity = tBowl.capacityLimit;
+				audio_play_sound(sfFoodInBowl, 0, 0);
 			}
 		}
 	}
@@ -48,3 +49,5 @@ if (dog != noone) {
 		}
 	}
 }
+
+durability += 1;
