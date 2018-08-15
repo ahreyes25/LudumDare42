@@ -7,3 +7,4 @@ image_xscale = choose(-1, 1);
 dogs		 = 0;
 unbreakable	 = true;
 oDungeonController.numberOfToilets++;
+words = false;

@@ -54,3 +54,4 @@ down			= false;
 up				= false;
 age				= 0;
 oldAge			= false;
+sad				= false;

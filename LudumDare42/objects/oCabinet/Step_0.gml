@@ -8,9 +8,19 @@ if (place_meeting(x, y, oDoor)) {
 
 // Get Bowls
 Input();
-if (lPressed) {
-	var person = collision_rectangle(x - 18, y - 18, x + 18, y + 18, oPlayer, false, true);
-	if (person != noone) {
+var person = collision_rectangle(x - 18, y - 18, x + 18, y + 18, oPlayer, false, true);
+if (person != noone) {
+	
+	if (!words) {
+		Words("L to get bowl.");
+		words = true;
+		
+		if (alarm[1] == -1) {
+			alarm[1] = 120;	
+		}
+	}
+	
+	if (lPressed) {
 		GivePlayerBowl();
 	}
 }

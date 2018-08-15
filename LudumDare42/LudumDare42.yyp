@@ -476,6 +476,25 @@
             }
         },
         {
+            "Key": "360d8bf4-4e8e-485c-8a02-e36b52eadff0",
+            "Value": {
+                "id": "7629e3c9-4fd7-4362-be85-5f1a34cd74e6",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "scripts\/ForceBlast\/ForceBlast.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "369bba4d-4b08-43b7-bbc2-bfe73c63ccee",
             "Value": {
                 "id": "e2a81ff3-ce96-415f-80eb-31c548b029d6",
@@ -1464,6 +1483,25 @@
             }
         },
         {
+            "Key": "8d9696f5-a251-46dd-bf3c-a8407177eb83",
+            "Value": {
+                "id": "e6b6bede-726e-443e-9a5f-81a39ffd8dbb",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "scripts\/CollisionCircleList\/CollisionCircleList.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "8d9bb997-da9f-4f1f-a0bd-65197bfeb3b8",
             "Value": {
                 "id": "12907628-2b23-4cec-baef-658802620ef2",
@@ -2148,6 +2186,25 @@
             }
         },
         {
+            "Key": "b87a2aea-7577-4831-9196-7932fd9adb81",
+            "Value": {
+                "id": "e9fa64b0-8eff-48cd-ba20-fe3dad4fa7c6",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\/sSad\/sSad.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "b96fb176-22f7-44d3-938d-64eb015e3107",
             "Value": {
                 "id": "af73ad62-e1c5-4adf-aa22-ca070f94cfef",
@@ -2183,6 +2240,25 @@
                 ],
                 "resourcePath": "sprites\/sBowl1\/sBowl1.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "bac7100b-cc72-4447-9111-abadb5dd75fc",
+            "Value": {
+                "id": "ddb46adf-1f1f-4639-83b5-19079f29b733",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sounds\/sfSad\/sfSad.yy",
+                "resourceType": "GMSound"
             }
         },
         {
@@ -2297,6 +2373,25 @@
                 ],
                 "resourcePath": "datafiles_yy\/DogsIncoming.m4a.yy",
                 "resourceType": "GMIncludedFile"
+            }
+        },
+        {
+            "Key": "c980e986-e327-4c75-a0f8-a7ad07eae8ce",
+            "Value": {
+                "id": "8b514196-c3a0-4660-8c94-f9f704da67c1",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sounds\/sfWhistle\/sfWhistle.yy",
+                "resourceType": "GMSound"
             }
         },
         {
@@ -3025,9 +3120,11 @@
         "2e3e3a9f-7678-4657-8a43-1b8a48a10181",
         "643695b2-29d8-4450-a869-78c0d888f83d",
         "369bba4d-4b08-43b7-bbc2-bfe73c63ccee",
+        "8d9696f5-a251-46dd-bf3c-a8407177eb83",
         "79c23e1b-4166-4c27-9d8d-2b7e6a6bdcac",
         "548382aa-52c3-4cb2-b5b1-803cfc8110e7",
         "789a54c8-58b1-47e4-baa3-8ab54612ca76",
+        "360d8bf4-4e8e-485c-8a02-e36b52eadff0",
         "aa09d6b1-9f59-4f58-942f-7b2b08c5f7d6",
         "d3d5b512-71fd-4601-bcc0-d9fe44676b26",
         "9e3dd00d-bacd-4d34-bbdf-2a28ae00d760",

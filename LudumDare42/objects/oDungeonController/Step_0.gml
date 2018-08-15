@@ -22,4 +22,5 @@ if ((numberOfDeadDogs + numberOfGoodBoys) == numberOfDogsToStart) {
 	global.largestDog = largestDog;
 	global.goodBoys = numberOfGoodBoys;
 	global.deadDogs = numberOfDeadDogs;
+	global.abuse = abuse;
 }

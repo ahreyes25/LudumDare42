@@ -5,3 +5,5 @@ image_speed  = 0;
 unbreakable = true;
 
 canDogClose  = true;
+
+words = false;

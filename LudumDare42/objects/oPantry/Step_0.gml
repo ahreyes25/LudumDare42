@@ -20,19 +20,44 @@ else if (!open && image_index <= 1) {
 
 
 // Fill bowl
-if (lPressed && open) {
-	var person = collision_rectangle(x - 18, y - 18, x + 18, y + 18, oPlayer, false, true);
-	if (person != noone) {
+var person = collision_rectangle(x - 18, y - 18, x + 18, y + 18, oPlayer, false, true);
+if (person != noone) {
+	if (lPressed && open) {
 		if (oPlayer.numberOfBowls > 0) {
-			var tBowl = ds_list_find_value(oPlayer.bowls, oPlayer.numberOfBowls - 1);
-			if (tBowl != noone) {
-				tBowl.full = true;
-				tBowl.capacity = tBowl.capacityLimit;
-				audio_play_sound(sfFoodInBowl, 0, 0);
+			
+			for (var i = oPlayer.numberOfBowls - 1; i >= 0; i--) {
+				var tBowl = ds_list_find_value(oPlayer.bowls, i);
+				if (tBowl != noone) {
+					if (!tBowl.full) {
+						audio_play_sound(sfFoodInBowl, 0, 0);
+						tBowl.full = true;
+						tBowl.capacity = tBowl.capacityLimit;
+						break;
+					}
+				}
 			}
 		}
 	}
+	
+	if (open && !words) {
+		Words("L to get food.");
+		words = true;
+			
+		if (alarm[2] == -1) {
+			alarm[2] = 120;	
+		}
+	}
+	
+	if (!open && !words) {
+		Words("J to open.");
+		words = true;
+			
+		if (alarm[2] == -1) {
+			alarm[2] = 120;	
+		}
+	}
 }
+
 
 var dog = collision_circle(x, y, 24, oDog, false, true);
 if (dog != noone) {
@@ -40,6 +65,7 @@ if (dog != noone) {
 		if (open && canDogClose) {
 			open = false;
 			canDogClose = false;
+			Words("Stop closing the pantry!");
 		}
 		else {
 			canDogClose = false;

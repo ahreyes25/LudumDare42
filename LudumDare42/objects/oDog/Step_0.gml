@@ -155,7 +155,7 @@ depth = -phy_position_y;
 						vspd = lengthdir_y(movementSpeed, point_direction(x, y, foodBowl.x, foodBowl.y));
 					}
 					else {
-						if (foodBowl.full && foodBowl.dogs < 4 && !foodBowl.carried) {
+						if (foodBowl.full && !foodBowl.carried) {
 							foodBowl.dogs++;
 							audio_play_sound(sfDogEat, 0, 0);
 							state = dogState.eat;	
@@ -205,7 +205,7 @@ depth = -phy_position_y;
 						vspd = lengthdir_y(movementSpeed, point_direction(x, y, toilet.x, toilet.y));
 					}
 					else {
-						if (toilet.open && toilet.dogs < 4) {
+						if (toilet.open) {
 							toilet.dogs++;
 							audio_play_sound(sfDogDrink, 0, 0);
 							state = dogState.drink;	
@@ -380,103 +380,119 @@ depth = -phy_position_y;
 	
 		#region // eat
 			case dogState.eat:
-				hspd = 0;
-				vspd = 0;
+				var b = collision_circle(x, y, 48, oBowl, false, true);
+				if (b != noone) {
+					hspd = 0;
+					vspd = 0;
 			
-				foodBowl.capacity--;
-				hunger += 0.5;
-				bathroom += 0.1;
-				scale += 0.005;
-				AddPoints(1);
+					foodBowl.capacity--;
+					hunger += 0.5;
+					bathroom += 0.1;
+					scale += 0.005;
+					AddPoints(1);
 			
-				if (!foodBowl.full || hunger >= 90) {
-					if (thirst <= 50) {
-						foodBowl.dogs--;
-						NewFixture();
+					if (!foodBowl.full || hunger >= 90) {
+						if (thirst <= 50) {
+							foodBowl.dogs--;
+							NewFixture();
 						
-						if (toilet != noone)
-							audio_play_sound(sfDogNeed, 0, 0);
+							if (toilet != noone)
+								audio_play_sound(sfDogNeed, 0, 0);
 							
-						state = dogState.moveToToilet;	
+							state = dogState.moveToToilet;	
+						}
+						else if (bathroom >= bathroomLimit) {
+							foodBowl.dogs--;
+							NewFixture();
+							state = dogState.poop;	
+						}
+						else {
+							foodBowl.dogs--;
+							NewFixture();
+							state = dogState.moveToRandom;	
+						}
 					}
-					else if (bathroom >= bathroomLimit) {
-						foodBowl.dogs--;
-						NewFixture();
-						state = dogState.poop;	
-					}
-					else {
-						foodBowl.dogs--;
-						NewFixture();
-						state = dogState.moveToRandom;	
+					else if (!foodBowl.full) {
+						if (hunger <= 50) {
+							NewFixture();
+							if (foodBowl != noone)
+								audio_play_sound(sfDogNeed, 0, 0);
+							state = dogState.moveToBowl;	
+						}
 					}
 				}
-				else if (!foodBowl.full) {
-					if (hunger <= 50) {
-						NewFixture();
-						if (foodBowl != noone)
-							audio_play_sound(sfDogNeed, 0, 0);
-						state = dogState.moveToBowl;	
-					}
+				else {
+					state = dogState.idle;	
 				}
 			break;
 		#endregion
 	
 		#region // drink
 			case dogState.drink:
-				hspd = 0;
-				vspd = 0;
+				var t = collision_circle(x, y, 48, oToilet, false, true);
+				if (t != noone) {
+					hspd = 0;
+					vspd = 0;
 
-				thirst += 0.5;
-				bathroom += 0.05;
-				scale += 0.001;
-				AddPoints(1);
+					thirst += 0.5;
+					bathroom += 0.05;
+					scale += 0.001;
+					AddPoints(1);
 			
-				if (!toilet.open || thirst >= 90) {
-					if (hunger <= 50) {
-						toilet.dogs--;
-						NewFixture();
+					if (!toilet.open || thirst >= 90) {
+						if (hunger <= 50) {
+							toilet.dogs--;
+							NewFixture();
 					
-						if (Chance(10)) {
-							toilet.open = false;	
-						}
+							if (Chance(10)) {
+								toilet.open = false;
+								Words("Who closed the toilet!");
+							}
 						
-						if (foodBowl != noone)
-							audio_play_sound(sfDogNeed, 0, 0);
+							if (foodBowl != noone)
+								audio_play_sound(sfDogNeed, 0, 0);
 							
-						state = dogState.moveToBowl;	
-					}
-					else if (bathroom >= bathroomLimit) {
-						toilet.dogs--;
-						NewFixture();
-					
-						if (Chance(10)) {
-							toilet.open = false;	
+							state = dogState.moveToBowl;	
 						}
-						state = dogState.poop;	
-					}
-					else {
-						toilet.dogs--;
-						NewFixture();
+						else if (bathroom >= bathroomLimit) {
+							toilet.dogs--;
+							NewFixture();
 					
-						if (Chance(10)) {
-							toilet.open = false;	
+							if (Chance(10)) {
+								Words("Who closed the toilet!");
+								toilet.open = false;	
+							}
+							state = dogState.poop;	
 						}
-						state = dogState.moveToRandom;	
+						else {
+							toilet.dogs--;
+							NewFixture();
+					
+							if (Chance(10)) {
+								Words("Who closed the toilet!");
+								toilet.open = false;	
+							}
+							state = dogState.moveToRandom;	
+						}
+					}
+					else if (!toilet.open) {
+						if (thirst <= 50) {
+							NewFixture();
+					
+							if (Chance(10)) {
+								Words("Who closed the toilet!");
+								toilet.open = false;	
+							}
+						
+							if (toilet != noone)
+								audio_play_sound(sfDogNeed, 0, 0);
+							
+							state = dogState.moveToToilet;	
+						}
 					}
 				}
-				else if (!toilet.open) {
-					if (thirst <= 50) {
-						NewFixture();
-					
-						if (Chance(10)) {
-							toilet.open = false;	
-						}
-						
-						if (toilet != noone)
-							audio_play_sound(sfDogNeed, 0, 0);
-							
-						state = dogState.moveToToilet;	
-					}
+				else {
+					state = dogState.idle;	
 				}
 			break;
 		#endregion
@@ -651,3 +667,9 @@ if (age > 3000) {
 	oldAge = true;
 	state = dogState.oldAge;
 }
+
+if (sad) {
+	if (alarm[4] == -1) {
+		alarm[4] = 120;	
+	}
+}	

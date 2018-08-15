@@ -1,6 +1,6 @@
 event_inherited();
 
-open			= true;
+open			= choose(true, false);
 sprite_index	= sDoor;
 image_index		= 0;
 image_speed		= 0;

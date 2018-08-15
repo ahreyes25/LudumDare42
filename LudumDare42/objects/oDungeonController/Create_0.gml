@@ -25,6 +25,7 @@ limitDistance		= 200;
 limitDrawCalls		= true; // set to true for game, this limits the number of draw calls to only what is near the player
 setKitchen			= 0;
 setBathroom			= 0;
+abuse				= 0;
 
 for (var i = 0; i < numberOfRooms; i++) {
 	var roomWidth		= irandom_range(4, 8);
