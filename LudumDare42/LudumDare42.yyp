@@ -495,6 +495,25 @@
             }
         },
         {
+            "Key": "38b4be20-d1d4-4de6-8047-c6adc82bd570",
+            "Value": {
+                "id": "9d81b4c7-6b8d-456f-aac3-b02569862c30",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "rooms\/rmTutorial\/rmTutorial.yy",
+                "resourceType": "GMRoom"
+            }
+        },
+        {
             "Key": "3a7d10fc-991c-4359-8e1b-3f965e53e092",
             "Value": {
                 "id": "c7a8d1ad-6c4f-4526-8e95-82e64e2f33ae",
@@ -549,6 +568,25 @@
                 ],
                 "resourcePath": "scripts\/Input\/Input.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "44a87089-d0db-4d64-a1ca-0506f8e61e4f",
+            "Value": {
+                "id": "d824906a-d90c-4f6d-b218-4cdae8f5fb47",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "objects\/oTutorial\/oTutorial.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -1651,6 +1689,25 @@
                 ],
                 "resourcePath": "sounds\/sfFridge\/sfFridge.yy",
                 "resourceType": "GMSound"
+            }
+        },
+        {
+            "Key": "9fd206d4-7899-4277-a0b5-fbc3ff8fba9b",
+            "Value": {
+                "id": "b55a59e2-d797-4840-b5c1-3f376f1f2193",
+                "modelName": "GMResourceInfo",
+                "mvc": "1.0",
+                "configDeltaFiles": [
+                    
+                ],
+                "configDeltas": [
+                    
+                ],
+                "resourceCreationConfigs": [
+                    "default"
+                ],
+                "resourcePath": "sprites\/sTutorial\/sTutorial.yy",
+                "resourceType": "GMSprite"
             }
         },
         {

@@ -12,7 +12,7 @@ while (collision_point(rx, ry, oSolid, false, true) != noone || !InsideRoom(rx, 
 }
 instance_create_layer(rx, ry, "Game", oPlayer);
 
-alarm[1] = 100;
+alarm[1] = 300;
 
 if (numberOfDoors == 0 || numberOfToilets == 0 ||
 	numberOfDumpsters == 0 || numberOfPantries == 0 || numberOfCabinets == 0) {

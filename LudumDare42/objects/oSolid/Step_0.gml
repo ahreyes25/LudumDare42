@@ -32,6 +32,9 @@ if (jPressed) {
 				ShakeScreen(4, 10);
 			}
 		}
+		else {
+			Words("Hands Are Full!");	
+		}
 	}
 }
 
