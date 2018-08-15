@@ -2,6 +2,7 @@
 	
 if (oPlayer.numberOfBowls > 0) {
 	// Check for cabinet
+	/*
 	var cabinet = collision_rectangle(x - 18, y - 18, x + 18, y + 18, oCabinet, false, true);
 	if (cabinet != noone) {
 		var tBowl = ds_list_find_value(oPlayer.bowls, oPlayer.numberOfBowls - 1);
@@ -16,8 +17,8 @@ if (oPlayer.numberOfBowls > 0) {
 	}
 	
 	// DROP BOWL ON GROUND
-	
-	else { // no cabinet
+	*/
+	//else { // no cabinet
 		// drop bowl
 		if (oPlayer.numberOfBowls > 0) {
 			//var groundBowl = collision_circle(oPlayer.x, oPlayer.y, 36, oBowl, false, true);
@@ -38,7 +39,7 @@ if (oPlayer.numberOfBowls > 0) {
 			//	}
 			//}
 		}
-	}
+	//}
 }
 
 

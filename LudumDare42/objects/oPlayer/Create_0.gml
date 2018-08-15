@@ -34,3 +34,4 @@ bowlCarryLimit	= 5;
 bowls			= ds_list_create();
 carryDog		= false;
 dogHolding		= noone;
+canGetBowl		= true;

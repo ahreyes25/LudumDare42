@@ -20,9 +20,15 @@ depth = -phy_position_y;
 			
 				if (thirst <= 50) {
 					state = dogState.moveToToilet;
+					
+					if (toilet != noone)
+						audio_play_sound(sfDogNeed, 0, 0);
 				}
 				else if (hunger <= 50) {
 					state = dogState.moveToBowl;
+					
+					if (foodBowl != noone)
+						audio_play_sound(sfDogNeed, 0, 0);
 				}
 				else if (bathroom >= bathroomLimit) {
 					state = dogState.poop;
@@ -54,12 +60,23 @@ depth = -phy_position_y;
 						state = dogState.knockingOnDoor;
 					}
 				}
+				
+				// do nothing
+				if (Chance(1)) {
+					state = dogState.doNothing;
+				}
 			
 				// Check Stats
 				if (thirst <= 50) {
+					if (toilet != noone)
+						audio_play_sound(sfDogNeed, 0, 0);
+						
 					state = dogState.moveToToilet;
 				}
 				else if (hunger <= 50) {
+					if (foodBowl != noone)
+						audio_play_sound(sfDogNeed, 0, 0);
+						
 					state = dogState.moveToBowl;
 				}
 				else if (bathroom >= bathroomLimit) {
@@ -132,7 +149,7 @@ depth = -phy_position_y;
 				}
 		
 				if (foodBowl != noone) {
-					var col = collision_circle(x, y, 12, foodBowl, false, true);
+					var col = collision_circle(x, y, 12 * scale, foodBowl, false, true);
 					if (col == noone) {
 						hspd = lengthdir_x(movementSpeed, point_direction(x, y, foodBowl.x, foodBowl.y));
 						vspd = lengthdir_y(movementSpeed, point_direction(x, y, foodBowl.x, foodBowl.y));
@@ -140,6 +157,7 @@ depth = -phy_position_y;
 					else {
 						if (foodBowl.full && foodBowl.dogs < 4 && !foodBowl.carried) {
 							foodBowl.dogs++;
+							audio_play_sound(sfDogEat, 0, 0);
 							state = dogState.eat;	
 						}
 						else {
@@ -181,7 +199,7 @@ depth = -phy_position_y;
 				}
 		
 				if (toilet != noone) {
-					var col = collision_circle(x, y, 12, toilet, false, true);
+					var col = collision_circle(x, y, 12 * scale, toilet, false, true);
 					if (col == noone) {
 						hspd = lengthdir_x(movementSpeed, point_direction(x, y, toilet.x, toilet.y));
 						vspd = lengthdir_y(movementSpeed, point_direction(x, y, toilet.x, toilet.y));
@@ -189,6 +207,7 @@ depth = -phy_position_y;
 					else {
 						if (toilet.open && toilet.dogs < 4) {
 							toilet.dogs++;
+							audio_play_sound(sfDogDrink, 0, 0);
 							state = dogState.drink;	
 						}
 						else {
@@ -374,6 +393,10 @@ depth = -phy_position_y;
 					if (thirst <= 50) {
 						foodBowl.dogs--;
 						NewFixture();
+						
+						if (toilet != noone)
+							audio_play_sound(sfDogNeed, 0, 0);
+							
 						state = dogState.moveToToilet;	
 					}
 					else if (bathroom >= bathroomLimit) {
@@ -390,6 +413,8 @@ depth = -phy_position_y;
 				else if (!foodBowl.full) {
 					if (hunger <= 50) {
 						NewFixture();
+						if (foodBowl != noone)
+							audio_play_sound(sfDogNeed, 0, 0);
 						state = dogState.moveToBowl;	
 					}
 				}
@@ -414,6 +439,10 @@ depth = -phy_position_y;
 						if (Chance(10)) {
 							toilet.open = false;	
 						}
+						
+						if (foodBowl != noone)
+							audio_play_sound(sfDogNeed, 0, 0);
+							
 						state = dogState.moveToBowl;	
 					}
 					else if (bathroom >= bathroomLimit) {
@@ -442,6 +471,10 @@ depth = -phy_position_y;
 						if (Chance(10)) {
 							toilet.open = false;	
 						}
+						
+						if (toilet != noone)
+							audio_play_sound(sfDogNeed, 0, 0);
+							
 						state = dogState.moveToToilet;	
 					}
 				}
@@ -469,8 +502,39 @@ depth = -phy_position_y;
 						alarm[1] = 10;	
 					}
 					
-					phy_active			= true;	
-					state				= dogState.idle;
+					phy_active = true;	
+					
+					if (hunger < 50) {
+						if (hunger < thirst) {
+							if (foodBowl != noone)
+								audio_play_sound(sfDogNeed, 0, 0);
+							
+							state = dogState.moveToBowl;	
+						}
+						else {
+							if (toilet != noone)
+								audio_play_sound(sfDogNeed, 0, 0);
+								
+							state = dogState.moveToToilet;	
+						}
+					}
+					else if (thirst < 50) {
+						if (thirst < hunger) {
+							if (toilet != noone)
+								audio_play_sound(sfDogNeed, 0, 0);
+								
+							state = dogState.moveToToilet;	
+						}
+						else {
+							if (foodBowl != noone)
+								audio_play_sound(sfDogNeed, 0, 0);
+								
+							state = dogState.moveToBowl;	
+						}
+					}
+					else {
+						state = dogState.idle;
+					}
 				}
 			break;
 		#endregion
@@ -479,6 +543,22 @@ depth = -phy_position_y;
 			case dogState.doNothing:
 				hspd = 0;
 				vspd = 0;
+				if (alarm[3] == -1) {
+					alarm[3] = 60;	
+				}
+				
+				// Check Stats
+				if (thirst <= 50) {
+					audio_play_sound(sfDogNeed, 0, 0);
+					state = dogState.moveToToilet;
+				}
+				else if (hunger <= 50) {
+					audio_play_sound(sfDogNeed, 0, 0);
+					state = dogState.moveToBowl;
+				}
+				else if (bathroom >= bathroomLimit) {
+					state = dogState.poop;
+				}
 			break;
 		#endregion
 	
@@ -488,7 +568,27 @@ depth = -phy_position_y;
 				oDungeonController.numberOfDeadDogs++;
 				var dd = instance_create_layer(x, y, "World", oDeadDog);
 				dd.scale = scale;
+				dd.name  = name;
 				instance_destroy();
+			break;
+		#endregion
+		
+		#region // old age
+			case dogState.oldAge:
+				hspd = 0;
+				vspd = 0;
+				phy_active = false;
+				
+				if (image_alpha > 0) {
+					image_alpha -= 0.01;	
+				}
+				else {
+					oDungeonController.numberOfGoodBoys++;
+					audio_play_sound(sfGoodBoy, 0, 0);
+					AddPoints(10000);
+					GoodComment();
+					instance_destroy();	
+				}
 			break;
 		#endregion
 	}
@@ -540,3 +640,14 @@ xprevious			= phy_position_xprevious;
 yprevious			= phy_position_yprevious;
 
 Collisions(oSolid);
+
+// Update largest dog
+if (scale > oDungeonController.largestDog) {
+	oDungeonController.largestDog = scale;	
+}
+
+age++;
+if (age > 3000) {
+	oldAge = true;
+	state = dogState.oldAge;
+}

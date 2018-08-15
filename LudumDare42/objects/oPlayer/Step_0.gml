@@ -67,6 +67,16 @@ else if (down)
 	if (carryDog) {
 		if (kPressed) {
 			carryDog = false;	
+			canGetBowl = false;
+			alarm[0] = 10;
+			audio_play_sound(sfPickupDog, 0, 0);
+		}
+		
+		var d = collision_circle(x, y, 12, oDog, false, true);
+		if (d == noone) {
+			carryDog = false;
+			canGetBowl = false;
+			alarm[0] = 10;
 			audio_play_sound(sfPickupDog, 0, 0);
 		}
 	}

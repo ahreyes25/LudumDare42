@@ -8,3 +8,6 @@ if (oDungeonController.limitDrawCalls) {
 		}
 	}
 }
+else {
+	visible = true;	
+}

@@ -12,4 +12,10 @@ while (collision_point(rx, ry, oSolid, false, true) != noone || !InsideRoom(rx, 
 }
 instance_create_layer(rx, ry, "Game", oPlayer);
 
-alarm[1] = 10;
+alarm[1] = 100;
+
+if (numberOfDoors == 0 || numberOfToilets == 0 ||
+	numberOfDumpsters == 0 || numberOfPantries == 0 || numberOfCabinets == 0) {
+		audio_stop_sound(DogsIncoming);
+		room_restart();		
+}

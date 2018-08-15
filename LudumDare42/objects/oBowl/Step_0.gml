@@ -11,6 +11,7 @@ phy_rotation		= 0;
 if (carried) {
 	phy_position_x = oPlayer.x;
 	phy_position_y = oPlayer.y;
+	depth = oPlayer.depth - 1;
 }
 
 x = phy_position_x;
@@ -33,7 +34,7 @@ Input();
 if (kPressed && !carried && canBePickedUp) {
 	var person = collision_rectangle(x - 12, y - 12, x + 12, y + 12, oPlayer, false, true);
 	if (person != noone) {
-		if (!person.carryDog) {
+		if (!person.carryDog && person.canGetBowl) {
 			ds_list_add(oPlayer.bowls, id);
 			oPlayer.numberOfBowls++;
 			visible = false;

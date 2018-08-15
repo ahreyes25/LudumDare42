@@ -1,0 +1,1 @@
+instance_create_layer(room_width / 2 + 50, room_height / 2 + 20, "Instances", oDogEnd);

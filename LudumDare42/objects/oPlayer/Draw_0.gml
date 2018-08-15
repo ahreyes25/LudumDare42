@@ -40,6 +40,8 @@ switch (state) {
 	#endregion
 }
 
+draw_self();
+
 #region // Draw Bowls
 	if (numberOfBowls > 0) {
 		for (var i = 0; i < numberOfBowls; i++) {
@@ -48,7 +50,5 @@ switch (state) {
 		}
 	}
 #endregion
-
-draw_self();
 
 //draw_text_transformed(x, y, numberOfBowls, 0.5, 0.5, 0);

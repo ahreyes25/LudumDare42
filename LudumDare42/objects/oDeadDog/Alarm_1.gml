@@ -1,0 +1,2 @@
+/// @description SarcasticComment
+SarcasticComment();

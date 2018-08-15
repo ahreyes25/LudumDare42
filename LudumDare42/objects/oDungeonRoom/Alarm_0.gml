@@ -5,10 +5,11 @@ GenerateWalls(id);
 if (isKitchen) {
 	GenerateObjectInRoom(id, oPantry);	
 	GenerateObjectInRoom(id, oFridge);	
+	oDungeonController.numberOfPantries++;
 }
 
 if (isBathroom) {
-	repeat(choose(1, 2, 3)) {
+	repeat(choose(2, 3)) {
 		GenerateObjectInRoom(id, oToilet);	
 	}
 }

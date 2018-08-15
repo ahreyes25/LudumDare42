@@ -11,10 +11,13 @@ numberOfCabinets	= 0;
 numberOfDogsToStart	= 100;
 numberOfDogs		= 0;
 numberOfDeadDogs	= 0;
+numberOfGoodBoys	= 0;
 numberOfBowls		= 0;
 numberOfToilets		= 0;
 numberOfDoors		= 0;
+numberOfPantries	= 0;
 points				= 0;
+largestDog			= 1;
 
 viewDistanceX		= 150;
 viewDistanceY		= 150;

@@ -31,5 +31,8 @@ if (tDoor != noone) {
 	}
 	
 	instance_create_layer(rx, ry, "Game", oDog);
-	audio_play_sound(sfNewDog, 0, 0);
+	
+	if ((numberOfDogsToStart * 3) - (numberOfDogs * 5) >= 20) {
+		audio_play_sound(sfNewDog, 0, 0);
+	}
 }

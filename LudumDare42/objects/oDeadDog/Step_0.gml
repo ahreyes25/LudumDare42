@@ -48,6 +48,7 @@ else {
 				AddPoints(1);
 				audio_play_sound(sfDumpsterDog, 0, 0);
 				instance_destroy();
+				SarcasticComment();
 			}
 		}
 	}

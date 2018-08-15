@@ -19,6 +19,7 @@ enum dogState {
 	carried,
 	doNothing,
 	dead,
+	oldAge,
 }
 #endregion
 
@@ -33,6 +34,7 @@ rx				= random_range(24, room_width  - 24);
 ry				= random_range(24, room_height - 24);
 foodBowl		= noone;
 toilet			= noone;
+name			= DogName();
 
 sprite_index	= sDogIdle;
 image_speed		= 0.5;
@@ -50,3 +52,5 @@ right			= false;
 left			= false;
 down			= false;
 up				= false;
+age				= 0;
+oldAge			= false;

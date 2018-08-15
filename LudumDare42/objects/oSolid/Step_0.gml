@@ -40,7 +40,7 @@ if (d != noone) {
 	durability--;	
 }
 
-if (durability <= 0) {
+if (durability <= 0 && !unbreakable) {
 	ShakeScreen(8, 10);
 	audio_play_sound(sfWallBreak, 0, 0);
 	instance_destroy();

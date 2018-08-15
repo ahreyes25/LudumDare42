@@ -8,13 +8,15 @@ if (wall == 0) { // left
 		ry = random_range(48, room_height - 72);
 	}
 	instance_create_layer(48, ry, "World", oDumpster);		
+	oDungeonController.numberOfDumpsters++;
 }
 
 else if (wall == 1) { // right
 	while (InsideRoom(room_width - 72, ry, noone, true) || instance_place(room_width - 48, ry, oSolid)) {
 		ry = random_range(48, room_height - 48);
 	}
-	instance_create_layer(room_width - 48, ry, "World", oDumpster);		
+	instance_create_layer(room_width - 48, ry, "World", oDumpster);	
+	oDungeonController.numberOfDumpsters++;
 }
 
 
@@ -22,12 +24,14 @@ else if (wall == 2) { // top
 	while (InsideRoom(rx, 48, noone, true) || instance_place(rx, 24, oSolid)) {
 		rx = random_range(48, room_width - 72);
 	}
-	instance_create_layer(rx, 48, "World", oDumpster);		
+	instance_create_layer(rx, 48, "World", oDumpster);	
+	oDungeonController.numberOfDumpsters++;
 }
 
 else if (wall == 3) { // bottom
 	while (InsideRoom(rx, room_height - 48, noone, true) || instance_place(rx, room_height - 48, oSolid)) {
 		rx = random_range(48, room_width - 48);
 	}
-	instance_create_layer(rx, room_height - 48, "World", oDumpster);		
+	instance_create_layer(rx, room_height - 48, "World", oDumpster);
+	oDungeonController.numberOfDumpsters++;
 }
