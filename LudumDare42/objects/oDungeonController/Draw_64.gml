@@ -11,7 +11,7 @@ if (oDungeonController.numberOfDeadDogs > 0) {
 }
 
 if (numberOfGoodBoys > 0) {
-	draw_text_transformed(10, 90, "Good Boys: " + string(oDungeonController.numberOfGoodBoys), 1, 1, 0);
+	draw_text_transformed(10, 90, "RIP Good Boys: " + string(oDungeonController.numberOfGoodBoys), 1, 1, 0);
 }
 
 //draw_text_transformed(10, 50, "Next Dog in: " + string(oDungeonController.alarm[1]), 1, 1, 0);
