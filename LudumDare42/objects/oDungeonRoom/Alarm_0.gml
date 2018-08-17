@@ -4,6 +4,7 @@ GenerateWalls(id);
 
 if (isKitchen) {
 	GenerateObjectInRoom(id, oPantry);	
+	//GenerateObjectInRoom(id, oPantry);	
 	GenerateObjectInRoom(id, oFridge);	
 	oDungeonController.numberOfPantries++;
 }

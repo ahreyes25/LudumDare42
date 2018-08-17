@@ -7,3 +7,8 @@ audio_play_sound(sfDogDie3, 0, 0);
 ShakeScreen(8, 20);
 ScreenFlash(0.8);
 alarm[1]		= 1;
+
+
+if (oDungeonController.numberOfDeadDogs == 50) {
+	Words("Press Space To Yell!");	
+}

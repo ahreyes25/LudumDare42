@@ -133,11 +133,11 @@ switch (state) {
 	#endregion
 }
 
-if (sad) {
-	draw_sprite_ext(sSad, 0, x + (6 * image_xscale), y - (12 * scale), 1, 1, 0, c_white, 1);	
-}
-
 draw_self();
+
+if (sad) {
+	draw_sprite_ext(sSad, 0, x + (6 * image_xscale), y - (18 * scale), 1, 1, 0, c_white, 1);	
+}
 
 //draw_text(x, y, age);
 

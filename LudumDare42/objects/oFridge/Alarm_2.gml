@@ -1,0 +1,2 @@
+words = false;
+canDogClose = true;

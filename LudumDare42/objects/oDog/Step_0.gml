@@ -619,6 +619,7 @@ depth = -phy_position_y;
 					canBePickedUp		= false;
 					carried				= true;
 					oPlayer.carryDog	= true;
+					
 					audio_play_sound(sfPickupDog, 0, 0);
 				
 					if (oPlayer.numberOfBowls > 0) {

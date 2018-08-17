@@ -17,6 +17,7 @@ if (dogs != noone) {
 		oDungeonController.abuse++;
 		tDog.bathroom += 10;
 		tDog.sad = true;
+		AddPoints(-100);
 	}
 	audio_play_sound(sfSad, 0, 0);
 }

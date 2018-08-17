@@ -12,6 +12,7 @@ var names = [
 	"Zoey", "Harley", "Gizmo", "Wrigley", "Katie", "Lulu", "Bruno", "Maya",
 	"Charlie", "Cody", "Maximus", "Heidi", "Molly", "Maggie", "Jo", "Josi",
 	"Riley", "Toby", "Loki", "Chico", "Benji", "Finn", "Delilah", "Holly",
+	"Mike", "Alex",
 ];
 
 var numberOfNames = array_length_1d(names);

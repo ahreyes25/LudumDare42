@@ -12,28 +12,34 @@ Input();
 if (jPressed) {
 	var person = collision_rectangle(x - 18, y - 18, x + 18, y + 18, oPlayer, false, true);
 	if (person != noone) {
-		if (person.canOpen) {
-			open = !open;	
+		if (person.canOpen) {	
 			
-			if (id.object_index == oFridge) {
+			if (id.object_index == oFridge && !open) {
 				audio_play_sound(sfFridge, 0, 0);	
 				ShakeScreen(3, 10);
+				open = true;
 			}
-			if (id.object_index == oPantry) {
+			
+			if (id.object_index == oPantry && !open) {
 				audio_play_sound(sfPantry, 0, 0);
 				ShakeScreen(2, 10);
+				open = true;
 			}
 			if (id.object_index == oToilet) {
 				audio_play_sound(sfToilet, 0, 0);
 				ShakeScreen(2, 10);
+				open = !open;
 			}
 			if (id.object_index == oDumpster) {
 				audio_play_sound(sfDumpsterOpen, 0, 0);
 				ShakeScreen(4, 10);
+				open = !open;
 			}
 		}
 		else {
-			Words("Hands Are Full!");	
+			if (!open) {
+				Words("Hands Are Full!");	
+			}
 		}
 	}
 }

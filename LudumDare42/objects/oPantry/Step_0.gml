@@ -22,7 +22,7 @@ else if (!open && image_index <= 1) {
 // Fill bowl
 var person = collision_rectangle(x - 18, y - 18, x + 18, y + 18, oPlayer, false, true);
 if (person != noone) {
-	if (lPressed && open) {
+	if (jPressed && open) {
 		if (oPlayer.numberOfBowls > 0) {
 			
 			for (var i = oPlayer.numberOfBowls - 1; i >= 0; i--) {
@@ -37,23 +37,26 @@ if (person != noone) {
 				}
 			}
 		}
-	}
-	
-	if (open && !words) {
-		Words("L to get food.");
-		words = true;
-			
-		if (alarm[2] == -1) {
-			alarm[2] = 120;	
+		else {
+			Words("Need a dog bowl.");	
 		}
 	}
-	
-	if (!open && !words) {
-		Words("J to open.");
-		words = true;
+	else {
+		if (open && !words) {
+			Words("J to get food.");
+			words = true;
 			
-		if (alarm[2] == -1) {
-			alarm[2] = 120;	
+			if (alarm[2] == -1) {
+				alarm[2] = 240;	
+			}
+		}
+		else if (!open && !words) {
+			Words("J to open.");
+			words = true;
+			
+			if (alarm[2] == -1) {
+				alarm[2] = 240;	
+			}
 		}
 	}
 }

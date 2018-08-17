@@ -12,16 +12,19 @@ var person = collision_rectangle(x - 18, y - 18, x + 18, y + 18, oPlayer, false,
 if (person != noone) {
 	
 	if (!words) {
-		Words("L to get bowl.");
+		Words("J to get bowl.");
 		words = true;
 		
 		if (alarm[1] == -1) {
-			alarm[1] = 120;	
+			alarm[1] = 240;	
 		}
 	}
 	
-	if (lPressed) {
+	if ((lPressed || jPressed) && !oPlayer.carryDog) {
 		GivePlayerBowl();
+	}
+	else if (lPressed || jPressed) {
+		Words("Hands are full!");	
 	}
 }
 

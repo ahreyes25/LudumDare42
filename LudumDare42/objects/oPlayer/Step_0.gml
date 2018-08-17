@@ -77,7 +77,7 @@ else if (down)
 			carryDog = false;
 			canGetBowl = false;
 			alarm[0] = 10;
-			audio_play_sound(sfPickupDog, 0, 0);
+			//audio_play_sound(sfPickupDog, 0, 0);
 		}
 	}
 

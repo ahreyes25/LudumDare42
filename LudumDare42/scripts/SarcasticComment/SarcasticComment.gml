@@ -1,6 +1,4 @@
 var comments = [
-	"Wow",
-	"...........",
 	":(",
 	":,(",
 	"You're The Worst",
@@ -10,8 +8,6 @@ var comments = [
 	"You Monster!",
 	"Sicko!",
 	"Disgusting",
-	"What about " + string(choose("her", "his")) + " family?",
-	"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
 	"F E E D H I M",
 	"F E E D H E R",
 	"You garbage human being!",
@@ -19,8 +15,13 @@ var comments = [
 	"There Goes Another One...",
 	"Their name was " + string(name) + ", you scum!",
 	"Their name was " + string(name) + ", you wretch!",
-	"Their name was " + string(name) + ", you wretch!",
-	"Their name was " + string(name) + ", you wretch!",
+	"I hope you go to jail",
+	"I hope you get arrested!",
+	"Dog killer",
+	"MURDERER!",
+	string(name) + " just wanted some food",
+	string(name) + " just wanted water.",
+	"You're trash",
 ]
 
 var numberOfComments = array_length_1d(comments);
